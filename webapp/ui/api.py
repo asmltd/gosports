@@ -39,7 +39,7 @@ class UserViewSet(ViewSet):
             users = user_details.objects.all()
             result = []
             for user in users:
-                result.append({"id": user.id, "name": user.username, "email": user.email, "password": user.password,"image":str(user.image)})
+                result.append({"id": user.id, "name": user.username, "email": user.email, "image":str(user.image)})
             return Response(result)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
