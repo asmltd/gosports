@@ -7,9 +7,11 @@ import json
 
 from .models import *
 
+
 class UserViewSet(ViewSet):
     base_url = r'/users'
     base_name = ''
+
     @csrf_exempt
     def create(self, request):
         if not request.user.is_authenticated():
@@ -17,12 +19,12 @@ class UserViewSet(ViewSet):
         try:
             data = request.data
             newuser = user_details.objects.create(username=data['username'] if 'username' in data.keys() else "",
-                                                     first_name=data[
-                                                         'first_name'] if 'first_name' in data.keys() else "",
-                                                     last_name=data['last_name'] if 'last_name' in data.keys() else "",
-                                                     email=data['email'] if 'email' in data.keys() else "",
-                                                     image=data['image'] if 'image' in data.keys() else "",
-                                                     usertype=data['usertype'] if 'usertype' in data.keys() else "")
+                                                  first_name=data[
+                                                      'first_name'] if 'first_name' in data.keys() else "",
+                                                  last_name=data['last_name'] if 'last_name' in data.keys() else "",
+                                                  email=data['email'] if 'email' in data.keys() else "",
+                                                  image=data['image'] if 'image' in data.keys() else "",
+                                                  usertype=data['usertype'] if 'usertype' in data.keys() else "")
             password = data['password'] if 'password' in data.keys() else ""
             newuser.set_password(password)
             newuser.save()
@@ -39,7 +41,7 @@ class UserViewSet(ViewSet):
             users = user_details.objects.all()
             result = []
             for user in users:
-                result.append({"id": user.id, "name": user.username, "email": user.email, "image":str(user.image)})
+                result.append({"id": user.id, "name": user.username, "email": user.email, "image": str(user.image)})
             return Response(result)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
