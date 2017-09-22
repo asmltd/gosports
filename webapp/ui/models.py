@@ -3,6 +3,7 @@ from django.contrib.sessions.backends.db import SessionStore as DBStore
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import AbstractUser, Group
+import datetime
 
 class user_details(AbstractUser):
     usertype = models.CharField(max_length=50, default='')
@@ -22,3 +23,6 @@ class user_details(AbstractUser):
             pass
 
         return data
+
+
+
