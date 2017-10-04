@@ -1,6 +1,6 @@
 import logging
 import inspect
-from django.conf.urls import patterns, url, include
+from django.conf.urls import  url, include
 from django.conf import settings
 from rest_framework import routers
 from rest_framework.viewsets import ViewSet
