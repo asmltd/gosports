@@ -7,6 +7,28 @@ import json
 
 from .models import *
 
+class SessionViewSet(ViewSet):
+    base_url = r'/session'
+    base_name = ''
+
+    def list(self, request):
+        if not request.user.is_authenticated():
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+        if request.method == "GET":
+            users = user_details.objects.get(id=request.user.id)
+            result = {
+                "username" : users.username,
+                "first_name" : users.first_name,
+                "last_name" : users.last_name,
+                "id" : users.id,
+                "email" : users.email,
+                "image" : str(users.image),
+                "usertype" : users.usertype
+            }
+
+            return Response(result)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class UserViewSet(ViewSet):
     base_url = r'/users'
