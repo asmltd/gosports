@@ -45,6 +45,7 @@
     <script src="/media/directives/asm_interval.js?v=0.16" type="text/javascript"></script>
     <script src="/media/directives/asm_tags.js?v=0.16" type="text/javascript"></script>
     <script src="/media/modules/people/athletes.js"></script>
+    <script src="/media/modules/people/add_user.js"></script>
     <script src="/media/modules/dashboard/dashboard_box.js"></script>
     <script src="/media/modules/user_details/user_details.js"></script>
     <script src="/media/modules/add_user/add_user.js"></script>
@@ -87,7 +88,7 @@
     <nav class="sidebar-nav">
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" ui-sref-active-eq="current" ui-sref="dashboard"><i class="icon-speedometer"></i> Dashboard </a>
+                <a class="nav-link" ui-sref-active="current" ui-sref="dashboard"><i class="icon-speedometer"></i> Dashboard </a>
             </li>
 
             <li class="divider"></li>
@@ -95,7 +96,7 @@
                 People
             </li>
             <li class="nav-item nav-dropdown" >
-                <a class="nav-link" ui-sref="athletes" ui-sref-active-eq="current"><i class="icon-people"></i> Athletes</a>
+                <a class="nav-link" ui-sref="athletes" ui-sref-active="current"><i class="icon-people"></i> Athletes</a>
             </li>
             <li class="nav-item nav-dropdown" >
                 <a class="nav-link" ><i class="icon-people"></i> Partners</a>
@@ -107,7 +108,7 @@
                 <a class="nav-link" ><i class="icon-people"></i> Coach</a>
             </li>
             <li class="nav-item nav-dropdown" >
-                <a class="nav-link" ><i class="icon-user-follow"></i> Create User</a>
+                <a class="nav-link" ui-sref="create" ui-sref-active="current"><i class="icon-user-follow"></i> Create User</a>
             </li>
 
             <li class="divider"></li>

@@ -3,6 +3,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import status
 from .models import *
+from athlete.models import *
 import json
 
 from .models import *
@@ -40,17 +41,19 @@ class UserViewSet(ViewSet):
             return Response(status=status.HTTP_401_UNAUTHORIZED)
         try:
             data = request.data
+            usertype = data['usertype'] if 'usertype' in data.keys() else ""
             newuser = user_details.objects.create(username=data['username'] if 'username' in data.keys() else "",
                                                   first_name=data[
                                                       'first_name'] if 'first_name' in data.keys() else "",
                                                   last_name=data['last_name'] if 'last_name' in data.keys() else "",
                                                   email=data['email'] if 'email' in data.keys() else "",
                                                   image=data['image'] if 'image' in data.keys() else "",
-                                                  usertype=data['usertype'] if 'usertype' in data.keys() else "")
+                                                  usertype=usertype)
             password = data['password'] if 'password' in data.keys() else ""
             newuser.set_password(password)
             newuser.save()
-
+            if usertype != "":
+                Athlete_details.objects.create(athlete=newuser)
             return Response({"result": "User created successfully", "status": True})
 
         except Exception as e:

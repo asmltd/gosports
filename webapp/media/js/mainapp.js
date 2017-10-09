@@ -15,7 +15,14 @@ window[appName].config(function ($stateProvider, $urlRouterProvider, $httpProvid
             controller: 'dashboard'
         });
 
-        $stateProvider
+    $stateProvider
+        .state('create', {
+            url: '/create',
+            templateUrl: '/media/modules/people/add_user.html?v=' + window.version,
+            controller: 'add_user'
+        });
+
+    $stateProvider
         .state('athletes', {
             url: '/athletes',
             templateUrl: '/media/modules/people/athletes.html?v=' + window.version,

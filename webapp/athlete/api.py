@@ -26,10 +26,10 @@ class AthleteViewSet(ViewSet):
                                                         hometown=data['hometown'] if 'hometown' in data.keys() else "",
                                                         dateofbirth=data[
                                                             'dateofbirth'] if 'dateofbirth' in data.keys() else "",
-                                                        coach=data['coach'] if 'coach' in data.keys() else "")
+                                                        coach=data['coach'] if 'coach' in data.keys() else "",
+                                                        usertype=data['usertype'] if 'usertype' in data.keys() else "")
 
             newathlete.save()
-
             return Response({"result": "User created successfully", "status": True})
 
         except Exception as e:

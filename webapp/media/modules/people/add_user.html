@@ -1,10 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<form class="col-md-6 offset-md-3" ng-submit="addUser()">
+    <div class="form-group row">
+        <label class="form-control-label" for="user_name">Name</label>
+        <div class="input-group">
+            <input type="text" class="form-control" id="user_name" placeholder="Username" ng-model="user.username">
+            <span class="input-group-addon">
+                <i class="fa fa-user"></i>
+            </span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="form-control-label" for="formGroupExampleInput2">Email</label>
+        <div class="input-group">
+            <input type="email" class="form-control" id="formGroupExampleInput2" placeholder="Email" ng-model="user.email">
+            <span class="input-group-addon">
+                <i class="fa fa-envelope"></i>
+            </span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="form-control-label" for="exampleInputPassword1">Password</label>
+        <div class="input-group">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="user.password">
+            <span class="input-group-addon">
+                <i class="fa fa-asterisk"></i>
+            </span>
+        </div>
+    </div>
 
-</body>
-</html>
+    <div class="form-group row">
+        <label class="form-control-label" for="exampleInputPassword2">Confirm -Password</label>
+        <div class="input-group">
+            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Confirm Password" ng-model="user.repassword">
+            <span class="input-group-addon">
+                <i class="fa fa-asterisk"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="form-control-label" for="usertype">User type</label>
+        <div class="input-group">
+            <select ng-model="user.usertype" class="form-control" id="usertype">
+                <option value="athlete">Athlete</option>
+                <option value="partner">Partner</option>
+                <option value="manager">Manager</option>
+                <option value="coach">Coach</option>
+            </select>
+            <span class="input-group-addon">
+                <i class="fa fa-users"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="form-control-label">Upload Image</label>
+        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"
+               file-model="myFile" ng-model="user.image">
+    </div>
+
+    <input class="btn btn-primary pull-right" type="submit" value="Submit">
+
+</form>
