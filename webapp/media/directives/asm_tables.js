@@ -84,9 +84,6 @@ window[appName].directive("asmTables", function (http, message, pin, $rootScope)
                     $scope.api = $scope.api + "&start=" + $scope.config.start + "&end=" + $scope.config.end;
                 }
 
-                if ($scope.config.type == 'nodes' || $scope.config.type == 'controllers') {
-                    $scope.api = $scope.api + "&removed=" + $scope.toggle_status;
-                }
 
                 http.Requests('get', $scope.api, '').success(function (response) {
 
@@ -99,168 +96,6 @@ window[appName].directive("asmTables", function (http, message, pin, $rootScope)
                     $scope.pages = generatePagesArray($scope.pagination.current, $scope.items, $scope.itemperpage, 7);
                     $scope.pagination.last = $scope.pages[$scope.pages.length - 1];
 
-
-
-                    if ($scope.config.type == "uedevices" || $scope.config.type == "controllers" || $scope.config.type == "access_point") {
-                        for (i = 0; i < $scope.list.length; i++) {
-                            if ($scope.list[i].hostname == "" || $scope.list[i].hostname == null || $scope.list[i].hostname == undefined) {
-                                $scope.list[i].hostname = "Unknown";
-                            }
-                        }
-                    }
-                    if ($scope.config.type == "clusters" || $scope.config.type == "zones") {
-                        for (i = 0; i < $scope.list.length; i++) {
-                            if ($scope.list[i].name == "" || $scope.list[i].name == null || $scope.list[i].name == undefined) {
-                                $scope.list[i].name = "Unknown";
-                            }
-                        }
-                    }
-
-                    if ($scope.config.type == "threshold") {
-                        for (i = 0; i < $scope.list.length; i++) {
-                            var start = $scope.list[i].min;
-                            var end = $scope.list[i].max;
-                            var inc = $scope.list[i].increment;
-                            var value_list = [];
-                            value_list.push(start);
-                            while (start != end) {
-                                start = start + inc;
-                                value_list.push(start);
-                            }
-
-                            $scope.list[i].values_list = value_list;
-                            if (value_list.indexOf($scope.list[i].value) == -1 && $scope.list[i].increment != -1) {
-                                $scope.list[i].value = value_list[0];
-                            }
-
-                        }
-                    }
-                    if ($scope.config.type == "wms_settings") {
-                        for (i = 0; i < $scope.list.length; i++) {
-                            if ($scope.list[i].type == 'select') {
-                                var start = parseInt($scope.list[i].min);
-                                var end = parseInt($scope.list[i].max);
-                                var inc = parseInt($scope.list[i].step);
-                                var value_list = [];
-                                value_list.push(start);
-                                while (start != end) {
-                                    start = start + inc;
-                                    value_list.push(start.toString());
-                                }
-
-                                $scope.list[i].values_list = value_list;
-                                //console.log($scope.list[i].value);
-                            }
-                        }
-                    }
-                    if ($scope.config.type == "controller_authorize") {
-                        for (i = 0; i < $scope.list.length; i++) {
-                            if ($scope.list[i]["authorized"] == false) {
-                                $scope.list[i]["new"] = true;
-                                $scope.list[i]["Status_text"] = "Unauthorized";
-                                $scope.list[i]["toggle"] = "fa-toggle-off";
-
-                            }
-                            else {
-                                $scope.list[i]["new"] = false;
-                                $scope.list[i]["Status_text"] = "Authorized";
-                                $scope.list[i]["toggle"] = "fa-toggle-on";
-                            }
-                        }
-                    }
-                    if ($scope.config.type == "agent_management") {
-                        for (i = 0; i < $scope.list.length; i++) {
-                            if ($scope.list[i]["enabled"] == false) {
-                                $scope.list[i]["new"] = true;
-                                $scope.list[i]["Status_text"] = "Disabled";
-                                $scope.list[i]["toggle"] = "fa-toggle-off";
-
-                            }
-                            else {
-                                $scope.list[i]["new"] = false;
-                                $scope.list[i]["Status_text"] = "Enabled";
-                                $scope.list[i]["toggle"] = "fa-toggle-on";
-                            }
-                        }
-                    }
-                    if ($scope.config.type == "agents") {
-                        $rootScope.latest_upgrade_id = null;
-                        for (i = 0; i < $scope.list.length; i++) {
-                            if ($scope.list[i]["latest"] == true) {
-                                $rootScope.latest_upgrade_id = $scope.list[i]["id"];
-                                //console.log($rootScope.latest_upgrade_id);
-
-                            }
-                            if ($scope.list[i]["upgrade_time"] == null) {
-                                $scope.list[i]["upgrade_time"] = "";
-
-                            }
-
-                        }
-                    }
-
-                    if ($scope.config.type == "interface") {
-                        $rootScope.latest_upgrade_id = null;
-                        for (i = 0; i < $scope.list.length; i++) {
-                            if ($scope.list[i].speed == -1) {
-                                $scope.list[i].speed = "UNKNOWN";
-                            }
-
-                        }
-                    }
-                    if ($scope.config.type == "nodes") {
-
-                        for (i = 0; i < $scope.list.length; i++) {
-                            var roles = ["UNIVERSAL", "WORKER", "FRONTEND", "BACKEND"];
-                            if ($scope.list[i].status == "removed") {
-                                $scope.list[i].color = "grey";
-                                $scope.list[i].status = "REMOVED";
-                            }
-                            if ($scope.list[i].status == "online") {
-                                $scope.list[i].color = "green";
-                                $scope.list[i].status = "ONLINE";
-                            }
-                            if ($scope.list[i].status == "offline") {
-                                $scope.list[i].color = "red";
-                                $scope.list[i].status = "OFFLINE";
-                            }
-                            try {
-                                $scope.list[i].role = roles[$scope.list[i].role - 1];
-                            } catch (e) {
-                                $scope.list[i].role = "UNKNOWN";
-                            }
-
-
-                        }
-                    }
-                    if ($scope.config.type == "controllers") {
-
-                        for (i = 0; i < $scope.list.length; i++) {
-                            if ($scope.list[i].ips.management != "") {
-                                $scope.list[i].ip = $scope.list[i].ips.management;
-                                continue;
-                            }
-                            if ($scope.list[i].ips.control != "") {
-                                $scope.list[i].ip = $scope.list[i].ips.control;
-                                continue;
-                            }
-
-                        }
-                    }
-
-
-                    if ($scope.config.type == "etld_options" || $scope.config.type == "wms_patch") {
-                        $rootScope.latest_upgrade_id = null;
-                        for (i = 0; i < $scope.list.length; i++) {
-                            $scope.list[i].style = "pointer";
-                            if ($scope.list[i].fixed == true) {
-                                $scope.list[i].style = "not-allowed";
-                            }
-
-                        }
-                    }
-
-
                     $scope.highlight();
 
 
@@ -268,13 +103,7 @@ window[appName].directive("asmTables", function (http, message, pin, $rootScope)
 
 
             };
-            $scope.showtable_menu = function () {
-                bootbox.dialog({
-                    title: $scope.title + " Table",
-                    message: "This is " + $scope.title + " table"
-                });
 
-            };
             $scope.to_trusted = function (html_code) {
                 var html = "";
                 try {
@@ -321,16 +150,6 @@ window[appName].directive("asmTables", function (http, message, pin, $rootScope)
 
                                 }
 
-                                /*
-                                 var matches = $scope.list[i][columns[j]].match(regEx);
-                                 if (matches == null) {
-                                 continue;
-                                 }
-
-                                 if (matches.length > 0) {
-                                 var highlight = "<span class='highlight'>$&</span>";
-                                 $scope.list[i][columns[j]] = $scope.list[i][columns[j]].replace(regEx, highlight);
-                                 }*/
                             }
 
                         }
@@ -351,57 +170,7 @@ window[appName].directive("asmTables", function (http, message, pin, $rootScope)
 
                 $scope.order = "";
                 $scope.filter = "";
-                if ($scope.config.type == "datalake" || $scope.config.type == "events") {
-                    $scope.sort = "timestamp";
-                    $scope.order = "desc";
-                }
-                if ($scope.config.type == "nodes") {
-                    $scope.sort = "hostname";
-                    $scope.order = "desc";
-                }
-                if ($scope.config.type == "users") {
-                    $scope.sort = "username";
-                    $scope.order = "desc";
-                }
-                if ($scope.config.type == "permission") {
-                    $scope.sort = "codename";
-                    $scope.order = "desc";
-                }
-                if ($scope.config.type == "controller_authorize") {
-                    $scope.sort = "serial";
-                    $scope.order = "desc";
-                }
-                if ($scope.config.type == "alarms") {
-                    $scope.sort = "opened";
-                    $scope.order = "desc";
-                }
-                if ($scope.config.type == "agent_management") {
-                    $scope.sort = "version";
-                    $scope.order = "desc";
-                }
-                if ($scope.config.type == "email_notification") {
-                    $scope.sort = "alarm_type";
-                    $scope.order = "desc";
-                }
-                if ($scope.config.type == "wms_settings") {
-                    $scope.sort = "option";
-                }
-                if ($scope.config.type == "session_history") {
-                    $scope.sort = "created";
-                    $scope.order = "asc";
-                }
-                if ($scope.config.type == "anomaly") {
-                    $scope.sort = "object_model_type";
-                    $scope.order = "asc";
-                }
-                if ($scope.config.type == "zones" || $scope.config.type == "uptime" || $scope.config.type == "groups") {
-                    $scope.sort = "name";
-                    $scope.order = "asc";
-                }
-                if ($scope.config.type == "threshold") {
-                    $scope.sort = "name";
-                    $scope.order = "asc";
-                }
+
                 if ($scope.config.filter != undefined) {
                     $scope.filter = $scope.config.filter;
                 }
@@ -679,6 +448,16 @@ window[appName].directive("asmTables", function (http, message, pin, $rootScope)
 
             $scope.delete_filter = function (id) {
                 bootbox.confirm("<i class='fa fa-fw fa-info'></i> Are you sure you want to remove filter ?", function (result) {
+                    if (result) {
+                        $scope.update_and_call_back('delete', $scope.config.api + id + "/", '');
+                    }
+
+                });
+
+            };
+
+            $scope.delete_user = function (id,name) {
+                bootbox.confirm("<i class='fa fa-fw fa-info'></i> Are you sure you want to remove "+name+" ?", function (result) {
                     if (result) {
                         $scope.update_and_call_back('delete', $scope.config.api + id + "/", '');
                     }

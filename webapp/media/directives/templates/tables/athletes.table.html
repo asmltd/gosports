@@ -11,7 +11,9 @@
                     </tr>
                     </thead>
                     <tr ng-repeat="row in list">
-                        <td>{{row.name}}</td>
+                        <td>
+                            <a ui-sref="athlete({id:row.id})">{{row.name}}</a>
+                        </td>
                         <td>{{row.hometown}}</td>
                         <td>{{row.sport}}</td>
                         <td>{{row.coach}}</td>
@@ -19,7 +21,7 @@
 
                         <td>
                             <span style="">
-                                <i class="fa fa-times" aria-hidden="true" ng-click="del_user(row.id)"></i>
+                                <i class="fa fa-times" aria-hidden="true" ng-click="delete_user(row.id,row.name)"></i>
                             </span>
 
                             <span style="">

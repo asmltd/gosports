@@ -21,7 +21,7 @@
     <script src="/media/js/tether.min.js"></script>
     <script src="/media/js/bootstrap.min.js"></script>
     <script src="/media/js/pace.min.js"></script>
-
+    <script src="/media/js/bootbox.min.js"></script>
 
     <!--Angular scripts-->
     <script src="/media/js/angular/angular.js" type="text/javascript"></script>
@@ -46,6 +46,7 @@
     <script src="/media/directives/asm_tags.js?v=0.16" type="text/javascript"></script>
     <script src="/media/modules/people/athletes.js"></script>
     <script src="/media/modules/people/add_user.js"></script>
+    <script src="/media/modules/athlete/athlete.js"></script>
     <script src="/media/modules/dashboard/dashboard_box.js"></script>
     <script src="/media/modules/user_details/user_details.js"></script>
     <script src="/media/modules/add_user/add_user.js"></script>
@@ -127,17 +128,7 @@
 
     <main class="main">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item">Home</li>
-            <li class="breadcrumb-item"><a href="#">Admin</a></li>
-            <li class="breadcrumb-item active">Dashboard</li>
-            <!-- Breadcrumb Menu-->
-            <li class="breadcrumb-menu">
-                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                    <a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a>
-                    <a class="btn btn-secondary" href="./"><i class="icon-graph"></i> &nbsp;Dashboard</a>
-                    <a class="btn btn-secondary" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
-                </div>
-            </li>
+
         </ol>
         <div class="container-fluid">
             <div ui-view id="temp"></div>

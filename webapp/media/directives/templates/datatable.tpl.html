@@ -17,25 +17,10 @@
             <button type="button" class="btn btn-default btn-sm" title="Search" ng-click="firstPage()">
                 <i class="fa fa-search"></i>
             </button>
-            <a class="btn btn-default btn-sm" title="Export" href="{{ export }}">
-                <i class="fa fa-download"></i>
-            </a>
+
             <button type="button" class="btn btn-default btn-sm" title="Refresh" ng-click="default_page()" ng-hide="config.type=='wms_patch'">
                 <i class="fa fa-refresh"></i>
             </button>
-            <button type="button" class="btn btn-default btn-sm" title="{{ toggle_tooltip }}" ng-click="toggle_data()" ng-show="config.type=='nodes'||config.type=='controllers'">
-                <i class="fa" ng-class="toggle_button"></i>
-            </button>
-            <button type="button" class="btn btn-default btn-sm" title="Pin to Dashboard" ng-click="pin_table()" ng-show="config.db_id==undefined">
-                <i class="fa fa-thumb-tack"></i>
-            </button>
-
-
-            <a href="#pin_to_cd" class="btn btn-default btn-sm lightview" data-lightview-options="skin: 'light'"
-               ng-if="config.db_id!=undefined" ng-click="popup()">
-                <i class="fa fa-edit" ></i>
-            </a>
-
 
 
 
@@ -44,9 +29,7 @@
     </span>
 
 </div>
-<div class="card-block" role="alert" ng-show="alert" id="alert">
 
-</div>
 <div class="card-block" ng-include="get_template()" style="overflow-x:auto;" ng-style="get_opacity()">
 
 

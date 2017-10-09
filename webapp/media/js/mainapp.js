@@ -29,6 +29,13 @@ window[appName].config(function ($stateProvider, $urlRouterProvider, $httpProvid
             controller: 'athletes'
         });
 
+    $stateProvider
+        .state('athlete', {
+            url: '/athlete/:id',
+            templateUrl: '/media/modules/athlete/athlete.html?v=' + window.version,
+            controller: 'athlete'
+        });
+
         $stateProvider
         .state('partners', {
             url: '/partners',
