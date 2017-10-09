@@ -1,0 +1,28 @@
+<table class="table table-bordered">
+    <tr>
+        <th ng-click="colum_sort('timestamp')" class="sortable">Timestamp
+            <i class="fa fa-fw" ng-class="get_col_icon('timestamp')"></i>
+        </th>
+        <th>Application
+        </th>
+        <th>Type
+        </th>
+        <th ng-if="config.location!='switch'">Summary
+        </th>
+        <th ng-if="config.location=='switch'">Data
+        </th>
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="event in list">
+        <td ng-bind-html="to_trusted(event.timestamp)" ng-if="config.location!='switch'">  </td>
+        <td ng-bind-html="to_trusted(event.timestamp_str)" ng-if="config.location=='switch'">  </td>
+        <td ng-bind-html="to_trusted(event.application)">  </td>
+        <td ng-bind-html="to_trusted(event.type)">  </td>
+        <td ng-bind-html="to_trusted(event.summary)" ng-if="config.location!='switch'">  </td>
+        <td ng-bind-html="to_trusted(event.data)" ng-if="config.location=='switch'">  </td>
+    </tr>
+    <tr ng-show="!list.length">
+        <td colspan="100">No event to display</td>
+    </tr>
+</table>
+

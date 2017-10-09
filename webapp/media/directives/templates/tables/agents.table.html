@@ -1,0 +1,24 @@
+<table class="table table-bordered">
+    <tbody>
+    <tr>
+        <th ng-click="colum_sort('current')" class="sortable">Version
+            <i class="fa fa-fw" ng-class="get_col_icon('current')"></i>
+        </th>
+        <th ng-click="colum_sort('created')" class="sortable">First Seen
+            <i class="fa fa-fw" ng-class="get_col_icon('created')"></i>
+        </th>
+        <th ng-click="colum_sort('modified')" class="sortable">Last Seen
+            <i class="fa fa-fw" ng-class="get_col_icon('modified')"></i>
+        </th>
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="et in list">
+        <td ng-bind-html="to_trusted(et.version)">  </td>
+        <td ng-bind-html="to_trusted(et.created)">  </td>
+        <td ng-bind-html="to_trusted(et.modified)">  </td>
+    </tr>
+    <tr ng-show="!list.length">
+        <td colspan="100">No data to display</td>
+    </tr>
+    </tbody>
+</table>

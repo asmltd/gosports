@@ -1,0 +1,5 @@
+<span data-toggle="tooltip" style="color:{{ disk.color }}"
+      title="{{ disk.mount }}  : {{ disk.percentage }} % "
+      ng-repeat="disk in disks">{{ disk.mount }}  ( {{ disk.percentage }} % )
+</span>
+<span ng-show="disks.length=='0'">UNKNOWN</span>

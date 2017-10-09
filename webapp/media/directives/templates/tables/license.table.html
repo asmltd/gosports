@@ -1,0 +1,42 @@
+<table class="table table-bordered">
+    <tbody>
+    <tr>
+        <th ng-click="colum_sort('sku')" class="sortable">SKU
+            <i class="fa fa-fw" ng-class="get_col_icon('sku')"></i>
+        </th>
+        <th ng-click="colum_sort('description')" class="sortable">Description
+            <i class="fa fa-fw" ng-class="get_col_icon('description')"></i>
+        </th>
+        <th ng-click="colum_sort('ap_count')" class="sortable">APs
+            <i class="fa fa-fw" ng-class="get_col_icon('ap_count')"></i>
+        </th>
+        <th ng-click="colum_sort('client_count')" class="sortable">UEs
+            <i class="fa fa-fw" ng-class="get_col_icon('client_count')"></i>
+        </th>
+        <th ng-click="colum_sort('expires')" class="sortable">Expires
+            <i class="fa fa-fw" ng-class="get_col_icon('expires')"></i>
+        </th>
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="row in list">
+        <td>
+            <span ng-bind-html="to_trusted(row.sku)"></span>
+        </td>
+        <td>
+            <span ng-bind-html="to_trusted(row.description)"></span>
+        </td>
+        <td>
+            <span ng-bind-html="to_trusted(row.ap_count)"></span>
+        </td>
+        <td>
+            <span ng-bind-html="to_trusted(row.client_count)"></span>
+        </td>
+        <td>
+            <span ng-bind-html="to_trusted(row.expires)"></span>
+        </td>
+    </tr>
+    <tr ng-show="!list.length">
+        <td colspan="100">No License to display</td>
+    </tr>
+    </tbody>
+</table>

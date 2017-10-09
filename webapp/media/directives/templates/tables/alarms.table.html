@@ -1,0 +1,83 @@
+<table class="table table-bordered">
+    <tbody>
+    <tr>
+        <th ng-click="colum_sort('status')" class="sortable">Status
+            <i class="fa fa-fw" ng-class="get_col_icon('status')"></i>
+        </th>
+        <th ng-click="colum_sort('opened')" class="sortable"> Open
+            <i class="fa fa-fw" ng-class="get_col_icon('opened')"></i>
+        </th>
+        <th ng-click="colum_sort('modified')" class="sortable"> Updated
+            <i class="fa fa-fw" ng-class="get_col_icon('modified')"></i>
+        </th>
+        <th ng-click="colum_sort('closed')" class="sortable"> Cleared
+            <i class="fa fa-fw" ng-class="get_col_icon('closed')"></i>
+        </th>
+        <th ng-click="colum_sort('message')" class="sortable"> Alarm
+            <i class="fa fa-fw" ng-class="get_col_icon('message')"></i>
+        </th>
+        <th ng-click="colum_sort('alarm_type')" class="sortable"> Triggered By
+            <i class="fa fa-fw" ng-class="get_col_icon('alarm_type')"></i>
+        </th>
+        <th ng-click="colum_sort('acked')" class="sortable"> Acknowledged
+            <i class="fa fa-fw" ng-class="get_col_icon('acked')"></i>
+        </th>
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="row in list">
+        <td>
+            <img src="/media/images/orange_led.png" width="20px" height="20px" data-toggle="tooltip"
+                 ng-if="row.status ==1 && row.acked==true" title="Acknowledged">
+            <img src="/media/images/green_led.png" width="20px" height="20px" data-toggle="tooltip"
+                 ng-if="row.status ==0" title="Cleared" >
+            <img src="/media/images/red_led.png" width="20px" height="20px" data-toggle="tooltip"
+                 ng-if="row.status ==1 && row.acked==false" title="Open" >
+        </td>
+        <td ng-bind-html="to_trusted(row.opened)"></td>
+        <td ng-bind-html="to_trusted(row.modified)"></td>
+        <td ng-bind-html="to_trusted(row.closed)"></td>
+        <td ng-bind-html="to_trusted(row.message)"></td>
+        <td>
+            <a ui-sref="cluster({id:row.alarm_type_object_id})"
+               ng-show="row.alarm_type=='cluster'">
+                <span ng-bind-html="to_trusted(row.trigger_text)"></span>
+            </a>
+            <a ui-sref="controller({id:row.alarm_type_object_id})"
+               ng-show="row.alarm_type=='controller'">
+                <span ng-bind-html="to_trusted(row.trigger_text)"></span>
+            </a>
+            <a ui-sref="zone({id:row.alarm_type_object_id})"
+               ng-show="row.alarm_type=='zone'">
+                <span ng-bind-html="to_trusted(row.trigger_text)"></span>
+            </a>
+            <a ui-sref="accesspoint({id:row.alarm_type_object_id})"
+               ng-show="row.alarm_type=='ap'">
+                <span ng-bind-html="to_trusted(row.trigger_text)"></span>
+            </a>
+            <a ui-sref="node({id:row.alarm_type_object_id})"
+               ng-show="row.alarm_type=='wmsnode'">
+                <span ng-bind-html="to_trusted(row.trigger_text)"></span>
+            </a>
+        </td>
+        <td>
+            <a href="#" data-toggle="tooltip"
+               title="Acknowledged By : {{ row.acked_by }}     Acknowledge Comment : {{ row.acked_comment }}      Acknowledged at : {{ row.acked_date }}"
+               data-placement="bottom" ng-if="row.acked==true">
+                <span style="color:green">
+                    <i class="fa  fa-check-square"></i>
+                </span>
+            </a>
+            <span style="color:blue" ng-if="row.acked==false">
+                <i class="fa fa-comment" ng-click="acknowledge(row.id)"></i>
+            </span>
+            <span style="color:red" ng-if="row.force_close==true">
+                <i class="fa fa-remove" ng-click="force_close(row.id)"></i>
+            </span>
+        </td>
+    </tr>
+    <tr ng-show="!list.length">
+        <td colspan="100">No alarm to display</td>
+    </tr>
+
+    </tbody>
+</table>

@@ -1,0 +1,53 @@
+<table class="table table-bordered">
+    <tbody>
+    <tr>
+        <th ng-click="colum_sort('name')" class="sortable">Name
+            <i class="fa fa-fw" ng-class="get_col_icon('name')"></i>
+        </th>
+        <th ng-click="colum_sort('cluster')" ng-show="config.location!='cluster'" class="sortable">Cluster
+            <i class="fa fa-fw" ng-class="get_col_icon('cluster')"></i>
+        </th>
+        <th ng-click="colum_sort('aps')" class="sortable">Access Points
+            <i class="fa fa-fw" ng-class="get_col_icon('aps')"></i>
+        </th>
+        <th ng-click="colum_sort('ues')" class="sortable">Client Sessions
+            <i class="fa fa-fw" ng-class="get_col_icon('ues')"></i>
+        </th>
+        <th colspan="2" ng-click="colum_sort('throughput')" class="sortable" style="text-align:center;">Throughput
+            <i class="fa fa-fw" ng-class="get_col_icon('throughput')"></i>
+        </th>
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="zone in list">
+        <td>
+            <a ui-sref="zone({id:zone.id})">
+                <span ng-bind-html="to_trusted(zone.name)"></span>
+            </a>
+        </td>
+        <td ng-show="config.location!='cluster'">
+            <a ui-sref="cluster({id:zone.cluster_id})">
+                <span ng-bind-html="to_trusted(zone.cluster)"></span>
+            </a>
+        </td>
+        <td>
+            <synesis-access-points
+                    options="{ total: zone.aps.total, online: zone.aps.online, offline:zone.aps.offline, unknown: zone.aps.unknown  }">
+            </synesis-access-points>
+        </td>
+        <td>
+            <synesis-client-sessions
+                    options="{ total: zone.ues.total, count_24: zone.ues.ues_24, count_5:zone.ues.ues_5 }">
+            </synesis-client-sessions>
+        </td>
+        <td>
+            <synesis-tx-tp tx="zone.throughput.tx"></synesis-tx-tp>
+        </td>
+        <td>
+            <synesis-rx-tp rx="zone.throughput.rx"></synesis-rx-tp>
+        </td>
+    </tr>
+    <tr ng-show="!list.length">
+        <td colspan="100">No Zone to display</td>
+    </tr>
+    </tbody>
+</table>

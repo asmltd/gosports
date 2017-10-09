@@ -1,0 +1,30 @@
+<table class="table table-bordered">
+    <tr>
+        <th ng-click="colum_sort('name')">Group Name
+            <i class="fa fa-fw" ng-class="get_col_icon('name')"></i>
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Tenant
+        </th>
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="group in list">
+        <td>
+            <a ui-sref="switch_group({id:group.id})">
+                <span ng-bind-html="to_trusted(group.name)"></span>
+            </a>
+        </td>
+        <td>
+            <span ng-bind-html="to_trusted(group.description)"></span>
+        </td>
+        <td>
+            <span ng-bind-html="to_trusted(group.tenant)"></span>
+        </td>
+    </tr>
+    <tr ng-show="!list.length">
+        <td colspan="100">No group to display</td>
+    </tr>
+</table>

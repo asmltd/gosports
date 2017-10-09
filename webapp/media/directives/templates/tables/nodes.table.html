@@ -1,0 +1,63 @@
+<table class="table table-bordered">
+    <tbody>
+    <tr>
+
+        <th>Hostname
+            <i class="fa fa-fw" ng-class="get_col_icon('hostname')"></i>
+        </th>
+        <th>Role
+        </th>
+        <th>Version
+        </th>
+        <th>IP Address
+        </th>
+        <th>Last Seen
+        </th>
+        <th>Primary
+        </th>
+        <th>Status
+        </th>
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="row in list">
+
+        <td>
+            <a ui-sref="node({id:row.id})">
+                <span ng-bind-html="to_trusted(row.hostname)"></span>
+            </a>
+        </td>
+        <td>
+            <i class="fa fa-fw fa-globe" ng-show="row.role=='UNIVERSAL'"
+               title="UNIVERSAL"></i>
+            <i class="fa fa-fw fa-database" ng-show="row.role=='BACKEND'"
+               title="BACKEND"></i>
+            <i class="fa fa-fw fa-gear" ng-show="row.role=='WORKER'"
+               title="WORKER"></i>
+            <i class="fa fa-fw fa-safari" ng-show="row.role=='FRONTEND'"
+               title="FRONTEND"></i>
+            <i class="fa fa-fw fa-question" ng-show="row.role=='UNKNOWN'"
+               title="UNKNOWN"></i>
+            <span ng-bind-html="to_trusted(row.role)"></span>
+        </td>
+        <td>
+            <span ng-bind-html="to_trusted(row.version)"></span>
+        </td>
+        <td>
+            <span ng-bind-html="to_trusted(row.host_address)"></span>
+        </td>
+        <td>
+            <span ng-bind-html="to_trusted(row.last_seen)"></span>
+        </td>
+        <td>
+            <span ng-show="row.primary==true" style="color:green;">Yes</span>
+            <span ng-show="row.primary==false" style="color:grey;">No</span>
+        </td>
+        <td>
+            <span ng-bind-html="to_trusted(row.status)" style="color:{{ row.color }}"></span>
+        </td>
+    </tr>
+    <tr ng-show="!list.length">
+        <td colspan="100">No node to display</td>
+    </tr>
+    </tbody>
+</table>

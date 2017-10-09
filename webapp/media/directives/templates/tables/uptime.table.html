@@ -1,0 +1,31 @@
+<table class="table table-bordered">
+    <tbody>
+    <tr>
+        <th>Time interval
+            <i class="fa fa-fw" ng-class="get_col_icon('name')"></i>
+        </th>
+
+        <th>Uptime
+        </th>
+        <th>Current
+        </th>
+
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="row in list">
+        <td>
+            {{ row.name }}
+        </td>
+        <td>
+            {{ row.y }} days
+        </td>
+        <td>
+            <span ng-if="row.color=='orange'">Current</span>
+            <span ng-if="row.color=='grey'">Previous</span>
+        </td>
+    </tr>
+    <tr ng-show="!list.length">
+        <td colspan="100">No data to display</td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,38 @@
+<table class="table table-bordered">
+    <tbody>
+    <tr>
+        <th ng-click="colum_sort('start')" class="sortable"> Start
+            <i class="fa fa-fw" ng-class="get_col_icon('start')"></i>
+        </th>
+        <th ng-click="colum_sort('end')" class="sortable"> End
+            <i class="fa fa-fw" ng-class="get_col_icon('end')"></i>
+        </th>
+        <th ng-click="colum_sort('description')" class="sortable"> Description
+            <i class="fa fa-fw" ng-class="get_col_icon('description')"></i>
+        </th>
+        <th ng-click="colum_sort('status')" class="sortable"> Status
+            <i class="fa fa-fw" ng-class="get_col_icon('status')"></i>
+        </th>
+        <th ng-click="colum_sort('status')" class="sortable"> Actions
+            <i class="fa fa-fw" ng-class="get_col_icon('status')"></i>
+        </th>
+
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="row in list">
+        <td ng-bind-html="to_trusted(row.start_str)"></td>
+        <td ng-bind-html="to_trusted(row.end_str)"></td>
+        <td ng-bind-html="to_trusted(row.description)"></td>
+        <td ng-bind-html="to_trusted(row.status_str)"></td>
+        <td>
+            <span style="color:red;">
+                <i class="fa fa-remove" ng-click="delete_row(row.id,'schedule')"></i>
+            </span>
+        </td>
+
+    </tr>
+    <tr ng-show="list.length<1">
+        <td colspan="100">No schedule to display</td>
+    </tr>
+    </tbody>
+</table>

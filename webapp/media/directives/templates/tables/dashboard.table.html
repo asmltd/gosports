@@ -1,0 +1,39 @@
+<table class="table table-bordered">
+    <tr>
+        <th ng-click="colum_sort('name')" class="sortable">Name
+            <i class="fa fa-fw" ng-class="get_col_icon('name')"></i>
+        </th>
+        <th ng-click="colum_sort('description')" class="sortable">Description
+            <i class="fa fa-fw" ng-class="get_col_icon('description')"></i>
+        </th>
+        <th ng-click="colum_sort('owner')" class="sortable">Owner
+            <i class="fa fa-fw" ng-class="get_col_icon('owner')"></i>
+        </th>
+        <th ng-click="colum_sort('status')" class="sortable">Status
+            <i class="fa fa-fw" ng-class="get_col_icon('status')"></i>
+        </th>
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="row in list">
+        <td>
+            <a ui-sref="dashboards({id:row.id})">
+                <span ng-bind-html="to_trusted(row.name)"></span>
+            </a>
+        </td>
+        <td ng-bind-html="to_trusted(row.description)">  </td>
+        <td>
+            <a ui-sref="account({id: row.owner_id})" ng-show="config.staff">
+                <span ng-bind-html="to_trusted(row.owner)"></span>
+            </a>
+            <span ng-show="!config.staff" ng-bind-html="to_trusted(row.owner)"></span>
+        </td>
+        <td>
+            <i class="fa fa-lock" ng-show="row.status=='Private'"></i>
+            <i class="fa fa-users" ng-show="row.status=='Shared'"></i>
+            {{ row.status }}
+        </td>
+    </tr>
+    <tr ng-show="!list.length">
+        <td colspan="100">No dashboard to display</td>
+    </tr>
+</table>

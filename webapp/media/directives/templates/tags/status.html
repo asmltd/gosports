@@ -1,0 +1,8 @@
+<img src="/media/images/green_led.png" width="20px" height="20px" data-toggle="tooltip"
+     ng-if="device.status =='Online'||device.color =='green'" title="Online" ng-hide="device.location=='ap'">
+<img src="/media/images/red_led.png" width="20px" height="20px" data-toggle="tooltip"
+     ng-if="device.color =='red'" title="Offline" ng-hide="device.location=='ap'">
+<img src="/media/images/orange_led.png" width="20px" height="20px" data-toggle="tooltip"
+     ng-if="device.status =='Unknown'||device.color=='orange'" title="Unknown">
+<img src="/media/images/grey_led.png" width="20px" height="20px" data-toggle="tooltip"
+     ng-if="device.status =='Offline'||device.color=='grey'" title="Unknown">

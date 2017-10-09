@@ -1,0 +1,50 @@
+<table class="table table-bordered">
+    <tbody>
+    <tr>
+        <th>
+            Type
+            <i class="fa fa-fw" ng-class="get_col_icon('object_model_type')"></i>
+        </th>
+        <th>
+            Topology
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
+            Data set
+        </th>
+        <th>
+            Fit / Recall
+        </th>
+        <th>
+            Time
+        </th>
+        <th>
+            Updated
+        </th>
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="row in list">
+        <td>{{ row.object_model_type }}</td>
+        <td>
+            {{ row.in_shape }} <i class="fa fa-fw fa-long-arrow-right"></i> {{ row.mlp_topology[0] }} <i
+                class="fa fa-fw fa-long-arrow-right"></i> {{ row.mlp_topology[1] }} <i
+                class="fa fa-fw fa-long-arrow-right"></i> {{ row.out_shape }}
+        </td>
+        <td>
+            <span ng-if="row.mlp_regressor==true">Regression</span>
+            <span ng-if="row.mlp_regressor==false">Classification</span>
+        </td>
+        <td>{{ row.data_set }} samples</td>
+        <td>{{ row.mlp_score }} / {{ row.mlp_recall }} %</td>
+        <td>{{ row.mlp_tt }}</td>
+        <td>{{ row.timestamp_str }}</td>
+
+    </tr>
+    <tr ng-show="!list.length">
+        <td colspan="100">No anomaly info to display</td>
+    </tr>
+
+    </tbody>
+</table>

@@ -1,0 +1,77 @@
+<table class="table table-bordered">
+    <tbody>
+    <tr>
+        <th >Timestamp
+            <i class="fa fa-fw" ng-class="get_col_icon('timestamp')"></i>
+        </th>
+        <th ng-show="config.location!='node'">Host
+        </th>
+        <th >Tenant
+        </th>
+        <th ng-show="config.location!='cluster'">Cluster
+        </th>
+        <th ng-show="config.location!='controller'">Controller
+        </th>
+        <th >Content
+        </th>
+        <th >Processed
+        </th>
+        <th >Processing Time
+        </th>
+        <th >Actions
+        </th>
+
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="data in list">
+        <td ng-bind-html="to_trusted(data.timestamp_str)">  </td>
+        <td ng-show="config.location!='node'">
+            <a ui-sref="node({id:data.node_id})">
+                <span ng-bind-html="to_trusted(data.node)"></span>
+            </a>
+        </td>
+        <td>
+            <a ui-sref="tenant({id:data.tenant_id})">
+                <span ng-bind-html="to_trusted(data.tenant)"></span>
+            </a>
+        </td>
+        <td ng-show="config.location!='cluster'">
+            <a ui-sref="cluster({id:data.cluster_id})">
+                <span ng-bind-html="to_trusted(data.cluster)"></span>
+            </a>
+        </td>
+        <td ng-show="config.location!='controller'">
+            <a ui-sref="controller({id:data.controller_id})">
+                <span ng-bind-html="to_trusted(data.controller)"></span>
+            </a>
+        </td>
+        <td>
+            <i class="fa fa-fw" ng-class="data.icon"
+               title="{{ data.content }}"></i>
+            {{ data.content }}
+        </td>
+        <td>
+            <span style="color:green" ng-if="data.is_processed==true">
+                <i class="fa fa-fw fa-check" title="Processed"></i>
+            </span>
+            <span ng-if="data.worker_busy==true">
+                <i class="fa fa-fw fa-hourglass" title="Processing..."></i>
+            </span>
+            <span ng-if="data.worker_busy!=true && data.is_processed==false">
+                <i class="fa fa-fw fa-clock-o" title="In the queue"></i>
+            </span>
+        </td>
+        <td ng-bind-html="to_trusted(data.processing_time)">  </td>
+        <td>
+            <a href="{{ data.download }}" ng-show="config.staff">
+                <i class="fa fa-fw fa-cloud-download" title="Download File"></i>
+            </a>
+            <i class="fa fa-fw fa-refresh" title="Reprocess File"
+               ng-show="data.can_reprocess" ng-click="reprocess(data.reprocess)"></i>
+        </td>
+    </tr>
+    <tr ng-show="!list.length">
+        <td colspan="100">No data to display</td>
+    </tr>
+    </tbody>
+</table>

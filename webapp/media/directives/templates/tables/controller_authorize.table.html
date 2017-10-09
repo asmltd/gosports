@@ -1,0 +1,34 @@
+<table class="table table-bordered">
+    <tbody>
+    <tr>
+        <th>Serial
+            <i class="fa fa-fw" ng-class="get_col_icon('serial')"></i>
+        </th>
+        <th>Hostname
+        </th>
+        <th>Cluster
+        </th>
+        <th>First Seen
+        </th>
+        <th>Last Seen
+        </th>
+        <th>Authorised
+        </th>
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="row in list">
+        <td ng-bind-html="to_trusted(row.serial)">  </td>
+        <td ng-bind-html="to_trusted(row.hostname)">  </td>
+        <td ng-bind-html="to_trusted(row.cluster)">  </td>
+        <td ng-bind-html="to_trusted(row.created)">  </td>
+        <td ng-bind-html="to_trusted(row.modified)">  </td>
+        <td>
+            <i class="fa fa-fw" ng-class="row.toggle" ng-click="authorize(row.id,row.new)"></i>
+        </td>
+    </tr>
+    <tr ng-show="list.length==0">
+        <td colspan="100">No Controller to display</td>
+    </tr>
+
+    </tbody>
+</table>

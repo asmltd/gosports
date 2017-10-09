@@ -1,0 +1,28 @@
+<div class="box-header with-border">
+    <h3 class="box-title">Disk Partitions</h3>
+</div>
+<div class="box-body">
+    <table class="table table-bordered">
+        <tbody>
+        <tr>
+            <th>Mount Point</th>
+            <th>Type</th>
+            <th>Size</th>
+            <th>Used</th>
+            <th>Free Space</th>
+        </tr>
+        <tr>
+        </tr>
+        <tr ng-repeat="disk in disks">
+            <td>{{ disk.mount }}</td>
+            <td>{{ disk.type }}</td>
+            <td>{{ disk.size }}</td>
+            <td>{{ disk.used }}</td>
+            <td>{{ disk.free }}</td>
+        </tr>
+        <tr ng-show="!disks.length">
+            <td colspan="100">No data to display</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

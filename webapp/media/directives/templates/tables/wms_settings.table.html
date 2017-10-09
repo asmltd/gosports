@@ -1,0 +1,39 @@
+<table class="table table-bordered">
+    <tbody>
+    <tr>
+        <th ng-click="colum_sort('option')" class="sortable"> Name
+            <i class="fa fa-fw" ng-class="get_col_icon('option')"></i>
+        </th>
+        <th ng-click="colum_sort('description')" class="sortable"> Description
+            <i class="fa fa-fw" ng-class="get_col_icon('description')"></i>
+        </th>
+        <th>value</th>
+
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="s in list">
+        <td ng-bind-html="to_trusted(s.option)" >  </td>
+        <td ng-bind-html="to_trusted(s.description)" >  </td>
+        <td>
+            <i class="fa  fa-toggle-on" ng-if="s.type=='bool'"
+               ng-click="wms_value_change(s.id,'0','toggle',s.locked)"
+               ng-show="s.value=='1'"> </i>
+            <i class="fa  fa-toggle-off" ng-if="s.type=='bool'"
+               ng-click="wms_value_change(s.id,'1','toggle',s.locked)"
+               ng-show="s.value=='0'"> </i>
+
+            <select ng-model="s.value" ng-if="s.type=='select'"
+                    ng-options="option for option in s.values_list"
+                    ng-change="wms_value_change(s.id, s.value,'value',s.locked)">
+            </select>
+            <span ng-if="s.type=='select'">{{ s.metric }}</span>
+            <input type="text"
+                   ng-model="s.value"
+                   ng-if="s.type=='string'"
+                   ng-disabled="s.locked"
+                   ng-blur="wms_value_change(s.id,s.value,'value',s.locked)">
+        </td>
+
+    </tr>
+    </tbody>
+</table>

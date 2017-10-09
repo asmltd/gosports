@@ -1,0 +1,32 @@
+<table class="table table-bordered">
+    <tbody>
+    <tr>
+        <th> Name
+            <i class="fa fa-fw" ng-class="get_col_icon('codename')"></i>
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Status
+        </th>
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="row in list">
+        <td>
+            <span ng-bind-html="to_trusted(row.codename)"></span>
+        </td>
+        <td>
+            <span ng-bind-html="to_trusted(row.description)"></span>
+        </td>
+        <td>
+            <i class="fa fa-toggle-on"
+               ng-click="change_permission(row.codename,0)"
+               ng-show="row.enabled==1"> </i>
+            <i class="fa fa-toggle-off"
+               ng-click="change_permission(row.codename,1)"
+               ng-show="row.enabled==0"> </i>
+        </td>
+    </tr>
+    </tbody>
+</table>

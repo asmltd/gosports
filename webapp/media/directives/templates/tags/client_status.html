@@ -1,0 +1,6 @@
+<img src="/media/images/green_led.png" width="20px" height="20px" data-toggle="tooltip"
+     ng-if="client.status =='AUTHORIZED'" title="Status : Authorized" >
+<img src="/media/images/red_led.png" width="20px" height="20px" data-toggle="tooltip"
+     ng-if="client.status =='UNAUTHORIZED'" title="Status : Un authorized" >
+<img src="/media/images/orange_led.png" width="20px" height="20px" data-toggle="tooltip"
+     ng-if="client.status !='UNAUTHORIZED' && client.status !='AUTHORIZED'" title="Status : Unknown" >

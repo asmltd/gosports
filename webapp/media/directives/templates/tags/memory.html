@@ -1,0 +1,15 @@
+<span ng-if="mem.total=='0' || mem.total=='-1'">UNKNOWN</span>
+<span ng-show="mem.total!='0' && mem.total!='-1'">
+    <span data-toggle="tooltip" title="Total Memory : {{ mem.total }} ">
+        {{ mem.total }}
+    </span>
+    (
+    <span data-toggle="tooltip" title="Used Memory  : {{ mem.used }} ">
+        {{ mem.used }}
+    </span>
+    /
+    <span data-toggle="tooltip" title="Free Memory  : {{ mem.free }} ">
+        {{ mem.free }}
+    </span>
+    )
+</span>

@@ -1,0 +1,22 @@
+<table class="table table-bordered">
+    <tr>
+        <th ng-click="colum_sort('issue')" class="sortable">Issue
+            <i class="fa fa-fw" ng-class="get_col_icon('issue')"></i>
+        </th>
+        <th ng-click="colum_sort('priority')" class="sortable">Priority
+            <i class="fa fa-fw" ng-class="get_col_icon('priority')"></i>
+        </th>
+        <th ng-click="colum_sort('filename')" class="sortable">Filename
+            <i class="fa fa-fw" ng-class="get_col_icon('filename')"></i>
+        </th>
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="row in list">
+        <td ng-bind-html="to_trusted(row.issue)">  </td>
+        <td ng-bind-html="to_trusted(row.priority)">  </td>
+        <td ng-bind-html="to_trusted(row.filename)">  </td>
+    </tr>
+    <tr ng-show="!list.length">
+        <td colspan="100">No data to display</td>
+    </tr>
+</table>

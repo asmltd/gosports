@@ -1,0 +1,68 @@
+<table class="table table-bordered">
+    <tr>
+        <th ng-click="colum_sort('status')" class="sortable">Status
+            <i class="fa fa-fw" ng-class="get_col_icon('status')"></i>
+        </th>
+        <th ng-click="colum_sort('ue_hostname')" class="sortable">Name
+            <i class="fa fa-fw" ng-class="get_col_icon('ue_hostname')"></i>
+        </th>
+        <th ng-click="colum_sort('ap')" class="sortable">Access Point
+            <i class="fa fa-fw" ng-class="get_col_icon('ap')"></i>
+        </th>
+        <th ng-click="colum_sort('ssid')" class="sortable" >SSID
+            <i class="fa fa-fw" ng-class="get_col_icon('ssid')"></i>
+        </th>
+        <th ng-click="colum_sort('radio')" class="sortable" >Radio
+            <i class="fa fa-fw" ng-class="get_col_icon('radio')"></i>
+        </th>
+        <th ng-click="colum_sort('first_seen')" class="sortable" >First Seen
+            <i class="fa fa-fw" ng-class="get_col_icon('first_seen')"></i>
+        </th>
+        <th ng-click="colum_sort('last_seen')" class="sortable" >Last Seen
+            <i class="fa fa-fw" ng-class="get_col_icon('last_seen')"></i>
+        </th>
+        <th >Duration
+        </th>
+
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="row in list">
+        <td>
+            <synesis-client-status options="{ status : row.status}"></synesis-client-status>
+        </td>
+        <td>
+            <a ui-sref="uesession({id:row.record_id})">
+                <span ng-bind-html="to_trusted(row.ue_hostname)"></span>
+                (<span ng-bind-html="to_trusted(row.ue_mac)"></span>)
+            </a>
+        </td>
+        <td>
+            <a ui-sref="accesspoint({id:row.ap_mac})">
+                <span ng-bind-html="to_trusted(row.ap)"></span>
+                (<span ng-bind-html="to_trusted(row.ap_mac)"></span>)
+            </a>
+        </td>
+
+        <td >
+            <span ng-bind-html="to_trusted(row.ssid)"></span>
+        </td>
+        <td >
+            <span style="color:grey" ng-show="row.radio_id ==0">2.4GHz</span>
+            <span style="color:orange" ng-show="row.radio_id !=0">5GHz</span>
+        </td>
+        <td>
+            {{ row.first_seen_display }}
+        </td>
+        <td>
+            {{ row.last_seen_display }}
+        </td>
+        <td>
+            {{ row.session_time }}
+        </td>
+
+
+    </tr>
+    <tr ng-show="!list.length">
+        <td colspan="100">No Session to display</td>
+    </tr>
+</table>

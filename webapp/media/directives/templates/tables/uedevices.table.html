@@ -1,0 +1,33 @@
+<table class="table table-bordered">
+    <tr>
+        <th ng-click="colum_sort('hostname')" class="sortable">Hostname
+            <i class="fa fa-fw" ng-class="get_col_icon('hostname')"></i>
+        </th>
+        <th ng-click="colum_sort('mac_address')" class="sortable">MAC Address
+            <i class="fa fa-fw" ng-class="get_col_icon('mac_address')"></i>
+        </th>
+        <th ng-click="colum_sort('operating_system')" class="sortable">Operating System
+            <i class="fa fa-fw" ng-class="get_col_icon('operating_system')"></i>
+        </th>
+        <th ng-click="colum_sort('last_seen')" class="sortable">Last Seen
+            <i class="fa fa-fw" ng-class="get_col_icon('last_seen')"></i>
+        </th>
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="clientdevices in list">
+        <td>
+            <a ui-sref="uedevice({id:clientdevices.record_id})">
+                <span ng-bind-html="to_trusted(clientdevices.hostname)"></span>
+            </a>
+        </td>
+        <td ng-bind-html="to_trusted(clientdevices.mac_address)">  </td>
+        <td>
+            <i class="fa" ng-class=get_os(clientdevices.operating_system)></i>
+            <span ng-bind-html="to_trusted(clientdevices.operating_system)"></span>
+        </td>
+        <td ng-bind-html="to_trusted(clientdevices.last_seen)">  </td>
+    </tr>
+    <tr ng-show="!list.length">
+        <td colspan="100">No device to display</td>
+    </tr>
+</table>

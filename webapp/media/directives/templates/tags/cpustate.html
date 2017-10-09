@@ -1,0 +1,18 @@
+<span ng-if="usage.idle=='-1' || usage.iowait=='-1' || usage.system=='-1' || usage.user=='-1'">UNKNOWN</span>
+<span ng-show="usage.idle!='-1' || usage.iowait!='-1' || usage.system!='-1' || usage.user!='-1'">
+    <span data-toggle="tooltip" title="idle  : {{ usage.idle }} ">
+        {{ usage.idle }}
+    </span>
+    &nbsp; / &nbsp;
+    <span data-toggle="tooltip" title="iowait  : {{ usage.iowait }} ">
+        {{ usage.iowait }}
+    </span>
+    &nbsp; / &nbsp;
+    <span data-toggle="tooltip" title="system  : {{ usage.system }} ">
+        {{ usage.system }}
+    </span>
+    &nbsp; / &nbsp;
+    <span data-toggle="tooltip" title="user  : {{ usage.user }} ">
+        {{ usage.user }}
+    </span>
+</span>

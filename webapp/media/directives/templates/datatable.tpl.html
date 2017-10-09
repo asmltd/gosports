@@ -1,0 +1,86 @@
+<div class="box-header with-border"
+     ng-style="get_style()"
+     ng-hide="config.tools==false && config.title==undefined">
+    <h1 class="box-title" data-toggle="tooltip" title="{{ config.desc }}">{{ config.title }}</h1>
+    <span style="float:right;" ng-hide="config.tools==false">
+        Show
+        <select ng-model="itemperpage" ng-change="firstPage()">
+                      <option value="5">5</option>
+                      <option value="10">10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+        </select>
+        Records &nbsp;
+        <input class="tab_search_box" type="text" synesis-enter-key="firstPage()" ng-model="filter" placeholder="Search...">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default btn-sm" title="Search" ng-click="firstPage()">
+                <i class="fa fa-search"></i>
+            </button>
+            <a class="btn btn-default btn-sm" title="Export" href="{{ export }}">
+                <i class="fa fa-download"></i>
+            </a>
+            <button type="button" class="btn btn-default btn-sm" title="Refresh" ng-click="default_page()" ng-hide="config.type=='wms_patch'">
+                <i class="fa fa-refresh"></i>
+            </button>
+            <button type="button" class="btn btn-default btn-sm" title="{{ toggle_tooltip }}" ng-click="toggle_data()" ng-show="config.type=='nodes'||config.type=='controllers'">
+                <i class="fa" ng-class="toggle_button"></i>
+            </button>
+            <button type="button" class="btn btn-default btn-sm" title="Pin to Dashboard" ng-click="pin_table()" ng-show="config.db_id==undefined">
+                <i class="fa fa-thumb-tack"></i>
+            </button>
+
+
+            <a href="#pin_to_cd" class="btn btn-default btn-sm lightview" data-lightview-options="skin: 'light'"
+               ng-if="config.db_id!=undefined" ng-click="popup()">
+                <i class="fa fa-edit" ></i>
+            </a>
+
+
+
+
+
+        </div>
+    </span>
+
+</div>
+<div class="box-body" role="alert" ng-show="alert" id="alert">
+
+</div>
+<div class="box-body" ng-include="get_template()" style="overflow-x:auto;" ng-style="get_opacity()">
+
+
+
+</div>
+
+<div class="box-footer clearfix">
+    <span ng-if="items!=0">
+        Showing {{ start }} to {{ end }} of {{ items }}
+    </span>
+    <ul class="pagination pagination-sm no-margin pull-right ng-scope" ng-if="1 < pages.length">
+        <li class="ng-scope" ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }">
+            <a href="" ng-click="setCurrent(1)" ng-show="pagination.current != 1">«</a>
+            <a href="" ng-show="pagination.current == 1">«</a>
+        </li>
+        <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }" class="ng-scope">
+            <a href="" ng-click="setCurrent(pagination.current - 1)" class="ng-binding" ng-show="pagination.current != 1">‹</a>
+            <a href="" ng-show="pagination.current == 1">‹</a>
+        </li>
+        <li class="ng-scope" ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }">
+            <a class="ng-binding" href="" ng-click="setCurrent(pageNumber)">{{ pageNumber }}</a>
+        <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }" class="ng-scope">
+            <a href="" ng-click="setCurrent(pagination.current + 1)" class="ng-binding" ng-show="pagination.current != pagination.last">›</a>
+            <a href="" ng-show="pagination.current == pagination.last">›</a>
+        </li>
+        <li class="ng-scope" ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == pagination.last }">
+            <a href="" ng-click="setCurrent(pagination.last)" ng-show="pagination.current != pagination.last">»</a>
+            <a href="" ng-show="pagination.current == pagination.last">»</a>
+        </li>
+    </ul>
+</div>
+
+<div class="overlay" ng-show="loaded==false">
+
+    <i class="fa"><img src="/media/images/loading_icon.gif"></i>
+
+</div>

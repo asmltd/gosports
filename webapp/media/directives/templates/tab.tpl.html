@@ -1,0 +1,56 @@
+<ul class="nav nav-tabs" style="text-decoration: none;">
+
+    <li ng-class="{active:config.tab == menu.tab}" style="cursor:pointer;" ng-repeat="menu in menu_primary">
+        <a ng-click="tab_change(menu.tab)" data-toggle="tab">{{ menu.title }}</a>
+    </li>
+
+
+    <li class="dropdown" ng-if="menu_secondary.length>0" ng-class="{active:other != 'More'}">
+        <a class="dropdown-toggle" data-toggle="dropdown" >
+            {{ other }} <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li ng-class="{active:config.tab == menu.tab}" style="cursor:pointer;" ng-repeat="menu in menu_secondary">
+                <a ng-click="tab_change(menu.tab)" data-toggle="tab">{{ menu.title }}</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="pull-right">
+        <a href="#custome_tab" class="lightview text-muted" data-lightview-options="skin: 'light'">
+            <i class="fa fa-gear" data-toggle="tooltip" title="Manage Tabs"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div style="display: none;">
+    <div class="box box-warning" id="custome_tab" style="width:400px;height:auto;">
+        <div class="box-header with-border">
+            <h3 class="box-title">Customize Tab menu:</h3>
+        </div>
+
+        <div class="box-body">
+
+            <ul id="sortable" style="padding: 18px;">
+                <li class="ui-state-default" id="{{ menu.tab }}" title="{{ menu.title }}"
+                    style="display: block; border:solid 1px orange;width:350px;padding: 5px;"
+                    ng-repeat="menu in config.menu ">
+                    <span style="cursor: move;">
+                        {{ menu.title }}
+                    </span>
+
+                    <i class="fa pull-right" ng-class="get_icon(menu.tab)" ng-click="toggle_menu(menu.tab)"
+                       style="cursor: pointer;">
+
+                    </i>
+
+                </li>
+            </ul>
+
+        </div>
+
+
+
+    </div>
+</div>

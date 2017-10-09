@@ -1,0 +1,61 @@
+<div class="box-header with-border">
+    <h3 class="box-title">{{ title }}</h3>
+    <div class="box-tools pull-right">
+        <a href="#pop_{{ config.popid }}" class="lightview" data-lightview-options="skin: 'light'" ng-click="call_events()">
+            <button data-widget="collapse" class="btn btn-box-tool" type="button">
+                <i class="fa fa-expand"></i>
+            </button>
+        </a>
+        <button class="btn btn-box-tool" type="button" ng-click="download_graph()">
+            <i class="fa fa-download"></i>
+        </button>
+        <button class="btn btn-box-tool" type="button" ng-click="pin_graph()" ng-if="config.db_id==undefined">
+            <i class="fa fa-thumb-tack"></i>
+        </button>
+        <a href="#pin_to_cd" class="lightview" data-lightview-options="skin: 'light'"
+               ng-if="config.db_id!=undefined" ng-click="popup()">
+            <button data-widget="collapse" class="btn btn-box-tool" type="button">
+                <i class="fa fa-edit" ></i>
+            </button>
+        </a>
+    </div>
+</div>
+<div class="box-body" ng-style="get_opacity()">
+    <div google-chart chart="chartObject" style="height:300px; width:100%;" id="{{ config.popid }}"></div>
+
+</div>
+<span style="display:none;" class="graph_container">
+    <div id="pop_{{ config.popid }}" style="width:900px;" ng-style="get_window_size()">
+        <div google-chart chart="chartObject_pop" style="height:300px; width:900px;"></div>
+        <!--div class="row" ng-if="false">
+            <div class="col-lg-1">
+                <button ng-click="restore_size()" class="btn btn-box-tool" type="button" >
+                    <i class="fa fa-arrows-h" ></i>
+                </button>
+            </div>
+            <div class="col-lg-10">
+                <rzslider
+                rz-slider-model="slider.minValue"
+                rz-slider-high="slider.maxValue"
+                rz-slider-options="slider.options">
+
+                </rzslider>
+            </div>
+            <div class="col-lg-1">
+                <button ng-click="filter_data()" class="btn btn-box-tool" type="button" >
+                    <i class="fa fa-filter" ></i>
+                </button>
+
+            </div>
+
+        </div-->
+
+        <synesis-tables options="events" ng-if="events"></synesis-tables>
+    </div>
+</span>
+<div class="overlay" ng-show="loaded==false">
+    <i class="fa"><img src="/media/images/loading_icon.gif"></i>
+</div>
+<div class="overlay" ng-show="no_data==true">
+    <i class="fa"><img src="/media/images/no_data.svg" style="width: 50px;height: 50px;" title="No Data Found"></i>
+</div>

@@ -1,0 +1,78 @@
+<table class="table table-bordered">
+    <tbody>
+    <tr>
+        <th ng-click="colum_sort('status')" class="sortable">Status
+            <i class="fa fa-fw" ng-class="get_col_icon('status')"></i>
+        </th>
+        <th ng-click="colum_sort('hostname')" class="sortable">Hostname
+            <i class="fa fa-fw" ng-class="get_col_icon('hostname')"></i>
+        </th>
+        <th ng-click="colum_sort('mac')" class="sortable">MAC Address
+            <i class="fa fa-fw" ng-class="get_col_icon('mac')"></i>
+        </th>
+        <th ng-click="colum_sort('model')" class="sortable">Model
+            <i class="fa fa-fw" ng-class="get_col_icon('model')"></i>
+        </th>
+        <th ng-click="colum_sort('serial')" class="sortable" ng-if="config.template!='state'">Serial Number
+            <i class="fa fa-fw" ng-class="get_col_icon('serial')"></i>
+        </th>
+        <th ng-click="colum_sort('firmware')" class="sortable" ng-if="config.template!='state'">Firmware
+            <i class="fa fa-fw" ng-class="get_col_icon('firmware')"></i>
+        </th>
+        <th ng-click="colum_sort('cluster')" ng-if="config.location!='cluster'" class="sortable">Cluster
+            <i class="fa fa-fw" ng-class="get_col_icon('cluster')"></i>
+        </th>
+        <th ng-click="colum_sort('controller')" ng-if="config.location!='controller'" class="sortable">Controller
+            <i class="fa fa-fw" ng-class="get_col_icon('controller')"></i>
+        </th>
+        <th ng-click="colum_sort('ues')" class="sortable" ng-if="config.template=='state'">Client Sessions
+            <i class="fa fa-fw" ng-class="get_col_icon('ues')"></i>
+        </th>
+        <th ng-click="colum_sort('throughput')" colspan="2" class="sortable" ng-if="config.template=='state'" style="text-align:center;">Throughput
+            <i class="fa fa-fw" ng-class="get_col_icon('throughput')"></i>
+        </th>
+
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="ap in list">
+        <td>
+            <synesis-ap-status options="{ status : ap.status}"></synesis-ap-status>
+        </td>
+        <td>
+            <a ui-sref="accesspoint({id:ap.id})">
+                <span ng-bind-html="to_trusted(ap.hostname)"></span>
+            </a>
+        </td>
+        <td ng-bind-html="to_trusted(ap.mac)">  </td>
+        <td ng-bind-html="to_trusted(ap.model)">  </td>
+        <td ng-bind-html="to_trusted(ap.serial)" ng-if="config.template!='state'">  </td>
+        <td ng-bind-html="to_trusted(ap.firmware)" ng-if="config.template!='state'">  </td>
+        <td ng-if="config.location!='cluster'">
+            <a ui-sref="cluster({id:ap.cluster_id})">
+                <span ng-bind-html="to_trusted(ap.cluster)"></span>
+            </a>
+        </td>
+        <td ng-if="config.location!='controller'">
+            <a ui-sref="controller({id:ap.controller_id})">
+                <span ng-bind-html="to_trusted(ap.controller)"></span>
+            </a>
+        </td>
+        <td ng-if="config.template=='state'">
+            <synesis-client-sessions
+                    options="{ total: ap.ues.total, count_24: ap.ues.count_24, count_5:ap.ues.count_5 }">
+            </synesis-client-sessions>
+        </td>
+        <td ng-if="config.template=='state'">
+            <synesis-tx-tp tx="ap.throughput.tx"></synesis-tx-tp>
+        </td>
+        <td ng-if="config.template=='state'">
+            <synesis-rx-tp rx="ap.throughput.rx"></synesis-rx-tp>
+        </td>
+
+    </tr>
+    <tr ng-show="!list.length">
+        <td colspan="100">No AccessPoint to display</td>
+    </tr>
+
+    </tbody>
+</table>

@@ -1,0 +1,38 @@
+<table class="table table-bordered">
+    <tr>
+        <th ng-click="colum_sort('session_key')" class="sortable">Key
+            <i class="fa fa-fw" ng-class="get_col_icon('session_key')"></i>
+        </th>
+        <th ng-click="colum_sort('created')" class="sortable">Created
+            <i class="fa fa-fw" ng-class="get_col_icon('created')"></i>
+        </th>
+        <th ng-click="colum_sort('expire_date')" class="sortable">Expires
+            <i class="fa fa-fw" ng-class="get_col_icon('expire_date')"></i>
+        </th>
+        <th>Expired
+        </th>
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="row in list">
+        <td>
+            <span ng-bind-html="to_trusted(row.session_key)"></span>
+        </td>
+        <td>
+            <span ng-bind-html="to_trusted(row.created)"></span>
+        </td>
+        <td>
+            <span ng-bind-html="to_trusted(row.expire_date)"></span>
+        </td>
+        <td>
+            <span style="color:green;" ng-if="row.expired==true">
+                <i class="fa fa-fw fa-check"></i>
+            </span>
+            <span style="color:red;" ng-if="row.expired==false">
+                <i class="fa fa-fw fa-power-off" ng-click="clear_session(row.session_key)"></i>
+            </span>
+        </td>
+    </tr>
+    <tr ng-show="!list.length">
+        <td colspan="100">No Session to display</td>
+    </tr>
+</table>

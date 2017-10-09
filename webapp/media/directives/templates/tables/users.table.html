@@ -1,0 +1,66 @@
+<table class="table table-bordered">
+    <tbody>
+    <tr>
+        <th>Username
+            <i class="fa fa-fw" ng-class="get_col_icon('username')"></i>
+        </th>
+        <th>
+            Full name
+        </th>
+        <th ng-hide="config.location=='db_pop'">
+            Email
+        </th>
+        <th ng-hide="config.location=='db_pop'">
+            Tenant
+        </th>
+        <th ng-show="config.location=='group'" >
+            Action
+        </th>
+        <th ng-show="config.location=='db_pop'" >
+            Share
+        </th>
+        <th ng-show="config.location=='db_pop'" >
+            Full access
+        </th>
+
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="u in list">
+        <td>
+            <a ui-sref="account({id: u.id})" ng-show="config.staff">
+                <span ng-bind-html="to_trusted(u.username)"></span>
+            </a>
+            <span ng-bind-html="to_trusted(u.username)" ng-show="!config.staff"></span>
+        </td>
+        <td>
+            <span ng-bind-html="to_trusted(u.first_name)"></span>  &nbsp;
+            <span ng-bind-html="to_trusted(u.last_name)"></span>
+        </td>
+        <td ng-hide="config.location=='db_pop'">
+            <span ng-bind-html="to_trusted(u.email)"></span>
+        </td>
+        <td ng-hide="config.location=='db_pop'">
+            <a ui-sref="tenant({id: u.tenant_id})" >
+                <span ng-bind-html="to_trusted(u.tenant)"></span>
+            </a>
+        </td>
+        <td ng-show="config.location=='group'">
+            <span style="color:red;" ng-click="remove_user(u.id)" data-toggle="tooltip" data-html="true" title="Remove {{ u.username }} from this group">
+                <i class="fa fa-fw fa-minus-square"></i>
+            </span>
+        </td>
+        <td ng-show="config.location=='db_pop'" style="min-width: 30px;">
+            <i class="fa fa-fw fa-toggle-off" ng-show="u.shared==false" ng-click="toggle_dash(u.id,'enable')"></i>
+            <i class="fa fa-fw fa-toggle-on" ng-show="u.shared==true" ng-click="toggle_dash(u.id,'disable')"></i>
+        </td>
+        <td ng-show="config.location=='db_pop'" style="min-width: 30px;">
+            <i class="fa fa-fw fa-toggle-off" ng-show="u.shared==false" ng-click="toggle_dash(u.id,'enable')"></i>
+            <i class="fa fa-fw fa-toggle-on" ng-show="u.shared==true" ng-click="toggle_dash(u.id,'disable')"></i>
+        </td>
+    </tr>
+    <tr ng-show="list.length==0">
+        <td colspan="100">No user to display</td>
+    </tr>
+
+    </tbody>
+</table>

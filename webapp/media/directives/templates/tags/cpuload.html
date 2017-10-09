@@ -1,0 +1,14 @@
+<span ng-if="load['1']=='-1' || load['5']=='-1' || load['15']=='-1'">UNKNOWN</span>
+<span ng-show="load['1']!='-1' || load['5']!='-1' || load['15']!='-1'">
+    <span data-toggle="tooltip" title="1 Minute  : {{ load['1'] }} ">
+        {{ load['1'] }}
+    </span>
+    &nbsp; / &nbsp;
+    <span data-toggle="tooltip" title="5 Minutes  : {{ load['5'] }} ">
+        {{ load['5'] }}
+    </span>
+    &nbsp; / &nbsp;
+    <span data-toggle="tooltip" title="15 Minute  : {{ load['15'] }} ">
+        {{ load['15'] }}
+    </span>
+</span>

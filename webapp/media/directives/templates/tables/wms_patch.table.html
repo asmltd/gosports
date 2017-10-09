@@ -1,0 +1,24 @@
+<table class="table table-bordered">
+    <tr>
+        <th>Description</th>
+        <th>Source</th>
+        <th>Target</th>
+        <th>Uploaded</th>
+        <th>Status</th>
+    </tr>
+    <tr></tr>
+    <tr ng-repeat="row in list">
+        <td>{{ row.description }}</td>
+        <td>{{ row.current_version }}</td>
+        <td>{{ row.supported_version }}</td>
+        <td>{{ row.created }}</td>
+        <td>
+            <span ng-if="row.status==0">Pending</span>
+            <span ng-if="row.status==1">Successful</span>
+            <span ng-if="row.status==2">Failed</span>
+        </td>
+    </tr>
+    <tr ng-show="!list.length">
+        <td colspan="100">No data to display</td>
+    </tr>
+</table>
