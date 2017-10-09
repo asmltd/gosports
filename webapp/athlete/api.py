@@ -22,10 +22,11 @@ class AthleteViewSet(ViewSet):
 
             user = user_details.objects.all().filter(username=data['username'])[0]
             newathlete = Athlete_details.objects.create(athlete=user,
-                                                  sport=data['sport'] if 'sport' in data.keys() else "",
-                                                  hometown=data['hometown'] if 'hometown' in data.keys() else "",
-                                                  dateofbirth=data['dateofbirth'] if 'dateofbirth' in data.keys() else "",
-                                                  coach=data['coach'] if 'coach' in data.keys() else "")
+                                                        sport=data['sport'] if 'sport' in data.keys() else "",
+                                                        hometown=data['hometown'] if 'hometown' in data.keys() else "",
+                                                        dateofbirth=data[
+                                                            'dateofbirth'] if 'dateofbirth' in data.keys() else "",
+                                                        coach=data['coach'] if 'coach' in data.keys() else "")
 
             newathlete.save()
 
@@ -42,8 +43,20 @@ class AthleteViewSet(ViewSet):
             users = Athlete_details.objects.all()
             result = []
             for user in users:
-                result.append({"id": user.id, "name": user.athlete.username, "sport": user.sport, "hometown": user.hometown})
-            return Response(result)
+                result.append({"id": user.id,
+                               "name": user.athlete.username,
+                               "dateofbirth": user.dateofbirth,
+                               "coach": user.coach,
+                               "sport": user.sport,
+                               "staff": user.staff,
+                               "hometown": user.hometown})
+            message = {"result": result,
+                       "number_of_rows": len(result),
+                       "total_rows": len(result),
+                       "page": 1,
+
+                       }
+            return Response(message)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
@@ -77,7 +90,6 @@ class AthleteViewSet(ViewSet):
         if Athlete_details.objects.filter(pk=pk).exists():
             return Response(Athlete_details.objects.get(pk=pk).json_ready())
         return Response(status=status.HTTP_401_UNAUTHORIZED)
-
 
     def destroy(self, request, pk=None):
         if pk and request.user.is_authenticated():

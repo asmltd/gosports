@@ -1,4 +1,4 @@
-app.controller('user_details', function($rootScope, $scope, $state, $http, $interval,$window) {
+window[appName].controller('user_details', function($rootScope, $scope, $state, $http, $interval,$window) {
     $scope.Details = [];
 
     $scope.loadUser = function() {

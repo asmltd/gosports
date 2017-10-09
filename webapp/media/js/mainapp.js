@@ -1,16 +1,32 @@
-var app = angular.module('GoSports',['ui.router']);
+window.appName = 'GoSports';
+
+window[appName] = angular.module(appName,['ui.router']);
 
 
-app.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+window[appName].config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/dashboard');
 
     $stateProvider
-        .state('dashboard_box', {
-            url: '/',
+        .state('dashboard', {
+            url: '/dashboard',
             templateUrl:'/media/modules/dashboard/dashboard_box.html?v=' + window.version,
-            controller: 'dashboard_box'
+            controller: 'dashboard'
+        });
+
+        $stateProvider
+        .state('athletes', {
+            url: '/athletes',
+            templateUrl: '/media/modules/people/athletes.html?v=' + window.version,
+            controller: 'athletes'
+        });
+
+        $stateProvider
+        .state('partners', {
+            url: '/partners',
+            templateUrl: '/media/modules/people/partners.html?v=' + window.version,
+            controller: 'partners'
         });
 
         $stateProvider
@@ -39,7 +55,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
         });
 
 
-app.service('fileUpload', ['$http', function ($http) {
+window[appName].service('fileUpload', ['$http', function ($http) {
     this.uploadFileToUrl = function(file,user,uploadUrl){
         var fd = new FormData();
 
@@ -59,3 +75,50 @@ app.service('fileUpload', ['$http', function ($http) {
         });
     }
 }]);
+
+
+window[appName].controller('gosports_controller', function ($rootScope, $scope, http, $state, $window, $interval) {
+
+    $scope.logout = function () {
+
+
+        window.location = window.logout;
+
+
+    };
+
+    function processTheData(method, action, url, parameter) {
+
+        http.Requests(method, url, parameter).success(function (response) {
+
+
+            //wmslib.log_plt(action, response);
+            switch (action) {
+
+                case 'session':
+                    $rootScope.user = response;
+                    break;
+
+
+
+            }
+        });
+    }
+
+
+
+
+
+    $scope.search_query = "";
+    $rootScope.alert = "";
+    $rootScope.alert_message = "";
+    $rootScope.alert_icon = "";
+    $rootScope.interval = {};
+    $rootScope.refresh = 15;
+
+    processTheData("get", "session", "/api/ui/session/", {});
+
+
+
+
+});

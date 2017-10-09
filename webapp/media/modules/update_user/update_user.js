@@ -1,4 +1,4 @@
-app.controller('update_user_controller', function($rootScope, $scope, $state, $http, $interval,$stateParams) {
+window[appName].controller('update_user_controller', function($rootScope, $scope, $state, $http, $interval,$stateParams) {
 
     $scope.user = {};
     $scope.id = $stateParams.id;

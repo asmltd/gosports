@@ -1,4 +1,4 @@
-app.controller('add_user_controller', function($rootScope, $scope, $state, $http, $interval,fileUpload) {
+window[appName].controller('add_user_controller', function($rootScope, $scope, $state, $http, $interval,fileUpload) {
 
     $scope.user = {};
     // calling our submit function.

@@ -1,0 +1,31 @@
+<table class="table table-condensed">
+                    <thead class="thead-inverse">
+                    <tr>
+                        <th>Username</th>
+                        <th>Hometown</th>
+                        <th>Sports</th>
+                        <th>Coach</th>
+                        <th>Staff</th>
+                        <th>Actions</th>
+
+                    </tr>
+                    </thead>
+                    <tr ng-repeat="row in list">
+                        <td>{{row.name}}</td>
+                        <td>{{row.hometown}}</td>
+                        <td>{{row.sport}}</td>
+                        <td>{{row.coach}}</td>
+                        <td>{{row.staff}}</td>
+
+                        <td>
+                            <span style="">
+                                <i class="fa fa-times" aria-hidden="true" ng-click="del_user(row.id)"></i>
+                            </span>
+
+                            <span style="">
+                                <a><i class="fa fa-pencil-square-o" aria-hidden="true"
+                                      ng-click="edit_user(row.id)"></i></a>
+                            </span>
+                        </td>
+                    </tr>
+                </table>

@@ -1,7 +1,7 @@
-<div class="box-header with-border"
+<div class="card-header"
      ng-style="get_style()"
      ng-hide="config.tools==false && config.title==undefined">
-    <h1 class="box-title" data-toggle="tooltip" title="{{ config.desc }}">{{ config.title }}</h1>
+    <h4 class="card-title" data-toggle="tooltip" title="{{ config.desc }}">{{ config.title }}</h4>
     <span style="float:right;" ng-hide="config.tools==false">
         Show
         <select ng-model="itemperpage" ng-change="firstPage()">
@@ -44,16 +44,16 @@
     </span>
 
 </div>
-<div class="box-body" role="alert" ng-show="alert" id="alert">
+<div class="card-block" role="alert" ng-show="alert" id="alert">
 
 </div>
-<div class="box-body" ng-include="get_template()" style="overflow-x:auto;" ng-style="get_opacity()">
+<div class="card-block" ng-include="get_template()" style="overflow-x:auto;" ng-style="get_opacity()">
 
 
 
 </div>
 
-<div class="box-footer clearfix">
+<div class="card-header clearfix">
     <span ng-if="items!=0">
         Showing {{ start }} to {{ end }} of {{ items }}
     </span>
