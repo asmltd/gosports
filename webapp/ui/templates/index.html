@@ -32,7 +32,7 @@
 
     <!-- Main scripts -->
     <script src="/media/js/app.js"></script>
-    <script src="/media/js/mainapp.js"></script>
+    <script src="/media/js/gosports.js"></script>
     <script src="/media/factory/http.js?v=0.16" type="text/javascript"></script>
     <script src="/media/factory/messages.js?v=0.16" type="text/javascript"></script>
     <script src="/media/factory/google_graph.js?v=0.16" type="text/javascript"></script>
@@ -45,9 +45,10 @@
     <script src="/media/directives/asm_interval.js?v=0.16" type="text/javascript"></script>
     <script src="/media/directives/asm_tags.js?v=0.16" type="text/javascript"></script>
     <script src="/media/modules/people/athletes.js"></script>
+    <script src="/media/modules/people/partners.js"></script>
     <script src="/media/modules/people/add_user.js"></script>
     <script src="/media/modules/athlete/athlete.js"></script>
-    <script src="/media/modules/dashboard/dashboard_box.js"></script>
+    <script src="/media/modules/dashboard/dashboard.js"></script>
     <script src="/media/modules/user_details/user_details.js"></script>
     <script src="/media/modules/add_user/add_user.js"></script>
     <script src="/media/modules/update_user/update_user.js"></script>
@@ -100,7 +101,7 @@
                 <a class="nav-link" ui-sref="athletes" ui-sref-active="current"><i class="icon-people"></i> Athletes</a>
             </li>
             <li class="nav-item nav-dropdown" >
-                <a class="nav-link" ><i class="icon-people"></i> Partners</a>
+                <a class="nav-link" ui-sref="partners" ui-sref-active="current"><i class="icon-people"></i> Partners</a>
             </li>
             <li class="nav-item nav-dropdown" >
                 <a class="nav-link" ><i class="icon-people"></i> Managers</a>
@@ -127,9 +128,7 @@
 </div>
 
     <main class="main">
-        <ol class="breadcrumb">
-
-        </ol>
+        <br>
         <div class="container-fluid">
             <div ui-view id="temp"></div>
         </div>

@@ -11,7 +11,7 @@ window[appName].config(function ($stateProvider, $urlRouterProvider, $httpProvid
     $stateProvider
         .state('dashboard', {
             url: '/dashboard',
-            templateUrl:'/media/modules/dashboard/dashboard_box.html?v=' + window.version,
+            templateUrl:'/media/modules/dashboard/dashboard.html?v=' + window.version,
             controller: 'dashboard'
         });
 
