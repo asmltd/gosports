@@ -22,6 +22,13 @@ window[appName].controller('athlete', function ($rootScope, $scope, $state, $htt
         });
     }
     processTheData("get", "athlete", "/api/athlete/"+$scope.id+"/", {});
+    $scope.disable_edit = true;
+    $scope.enable_edit = function(){
+        $scope.disable_edit = false;
+    };
+    $scope.save_changes = function(){
+        $scope.disable_edit = true;
+    };
 
 
 });
