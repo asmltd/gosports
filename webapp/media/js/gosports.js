@@ -14,6 +14,12 @@ window[appName].config(function ($stateProvider, $urlRouterProvider, $httpProvid
             templateUrl:'/media/modules/dashboard/dashboard.html?v=' + window.version,
             controller: 'dashboard'
         });
+    $stateProvider
+        .state('calender', {
+        url:'/calender',
+        templateUrl:'/media/modules/calender/calender.html?v=' + window.version,
+        controller:'calender'
+        });
 
     $stateProvider
         .state('create', {
@@ -35,6 +41,7 @@ window[appName].config(function ($stateProvider, $urlRouterProvider, $httpProvid
             templateUrl: '/media/modules/athlete/athlete.html?v=' + window.version,
             controller: 'athlete'
         });
+
 
         $stateProvider
         .state('partners', {

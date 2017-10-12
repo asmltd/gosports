@@ -57,11 +57,77 @@
                                    placeholder="Supporting staff" ng-model="athlete.staff">
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label">Training Base</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" placeholder="Training Base" ng-disabled="disable_edit" ng-model="athlete.training">
+                        </div>
 
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 ">International Debute</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" placeholder="International Debute" ng-disabled="disable_edit" ng-model="athlete.Debute">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label">Career Best Rank</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" ng-model="athlete.bestrank" placeholder="Career Best Rank" ng-disabled="disable_edit">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label">Current Rank</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" ng-model="athlete.rank" placeholder="Current Rank" ng-disabled="disable_edit">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label">Short Term Goal</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" ng-model="athlete.shortterm" placeholder="Short Term Goal" ng-disabled="disable_edit">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label">Long Term Goal</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" ng-model="athlete.longterm" placeholder="Long Term Goal" ng-disabled="disable_edit">
+                        </div>
+                    </div>
+
+                <div class="col-md-offset-9">
+                    <button type="button" class="btn btn-info btn-sm buttonplace" data-toggle="collapse" data-target="#viewmore">View more</button>
+                </div>
+                    <br>
+                <div id="viewmore" class="collapse">
+                    <h4>User Description</h4>
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label">Other Details 1</label>
+                        <div class="col-md-9" >
+                            <input type="text" class="form-control" placeholder="Other Details"  ng-disabled="disable_edit" ng-model="athlete.details1">
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <label class="col-md-3 form-control-label">Other Details 2</label>
+                        <div class="col-md-9" >
+                            <input type="text" class="form-control" placeholder="Other Details"  ng-disabled="disable_edit" ng-model="athlete.details2">
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <label class="col-md-3 form-control-label">Other Details 3</label>
+                        <div class="col-md-9" >
+                            <input type="text" class="form-control" placeholder="Other Details"  ng-disabled="disable_edit" ng-model="athlete.details3">
+                        </div>
+                    </div>
+                </div>
+                    <!--<div class="col-md-offset-3">-->
+                    <!--<button type="button" class="btn btn-info btn-sm" >View Less</button>-->
+                <!--</div>-->
 
                 </form>
 
             </div>
+
             <div class="col-md-4">
                 <br>
                 <img src="/media/user_images/user.jpg" class="img-avatar" style="width:200px;height:200px;">
@@ -78,6 +144,11 @@
         </div>
     </div>
 </div>
+<style>
+    .buttonplace{
+    float:right;
+    }
+</style>
 
 
 
