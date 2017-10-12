@@ -1,0 +1,37 @@
+<body>
+  <h1>{{t.mes_nombre}} {{t.anio}}</h1>
+<table>
+    <thead>
+      <tr>
+        <th>monday</th>
+        <th>tuesday</th>
+        <th>wedesday</th>
+        <th>thursday</th>
+        <th>friday</th>
+        <th>saturday</th>
+        <th>Sunday</th>
+      </tr>
+  </thead>
+  <tbody>
+    <!--<tr ng-repeat="week in t.semanas">-->
+       <!--<td ng-repeat="dia in week track by $index"-->
+           <!--ng-class="{'today':(dia==t.hoy)}">-->
+         <span>{{toaday}}</span>
+      <!--</td>-->
+    <!--</tr>-->
+  </tbody>
+</table>
+  <style>
+      table{width:100%;
+float:right;}
+
+th, td{padding: 1rem;
+  text-align:center;
+
+}
+thead{background-color:#f1f1f1;}
+
+.today{font-weigth: 700; background-color: yellow;}
+
+  </style>
+</body>
