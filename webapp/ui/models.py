@@ -7,7 +7,6 @@ import datetime
 
 class user_details(AbstractUser):
     usertype = models.CharField(max_length=50, default='')
-    image = models.ImageField(null=True,blank=True,upload_to='user_images/')
 
     def json_ready(self, detailed=False):
         data = {'id': self.id,

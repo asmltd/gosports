@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'athlete',
     'rest_framework',
     'api',
+    'athlete.achievements',
 ]
 
 MIDDLEWARE_CLASSES = [
