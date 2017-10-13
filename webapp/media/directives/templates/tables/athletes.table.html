@@ -12,7 +12,10 @@
                     </thead>
                     <tr ng-repeat="row in list">
                         <td>
-                            <a ui-sref="athlete({id:row.id})">{{row.name}}</a>
+                            <a ui-sref="athlete({id:row.id})">
+                                User
+                                {{row.first_name}} {{row.last_name}}
+                            </a>
                         </td>
                         <td>{{row.hometown}}</td>
                         <td>{{row.sport}}</td>

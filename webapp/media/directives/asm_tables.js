@@ -76,8 +76,9 @@ window[appName].directive("asmTables", function (http, message, pin, $rootScope)
                     return false;
                 }
                 $scope.loaded = false;
+                var offset = parseInt($scope.pagination.current) * parseInt($scope.itemperpage);
 
-                $scope.api = $scope.config.api + "?page=" + $scope.pagination.current + "&page_limit=" + $scope.itemperpage;
+                $scope.api = $scope.config.api + "?page=" + offset.toString() + "&limit=" + $scope.itemperpage;
                 $scope.api = $scope.api + "&sort=" + $scope.sort + "&order=" + $scope.order + "&filter=" + $scope.filter;
 
                 if ($scope.config.start != undefined && $scope.config.end != undefined) {
@@ -88,10 +89,10 @@ window[appName].directive("asmTables", function (http, message, pin, $rootScope)
                 http.Requests('get', $scope.api, '').success(function (response) {
 
                     $scope.loaded = true;
-                    $scope.list = response.result;
-                    $scope.items = response.total_rows;
+                    $scope.list = response.results;
+                    $scope.items = response.count;
                     $scope.start = ($scope.itemperpage * ($scope.pagination.current - 1)) + 1;
-                    $scope.end = $scope.start + response.number_of_rows - 1;
+                    $scope.end = $scope.start + $scope.list.length - 1;
                     $scope.export = $scope.config.api + "?export=true&page=1&page_limit=" + $scope.items;
                     $scope.pages = generatePagesArray($scope.pagination.current, $scope.items, $scope.itemperpage, 7);
                     $scope.pagination.last = $scope.pages[$scope.pages.length - 1];
