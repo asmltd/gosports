@@ -16,6 +16,9 @@ window[appName].controller('athlete', function ($rootScope, $scope, $state, $htt
                     console.log($scope.athlete);
                     break;
 
+                case 'save':
+                    processTheData("get", "athlete", "/api/athlete/"+$scope.id+"/", {});
+                    break;
 
 
             }
@@ -27,6 +30,7 @@ window[appName].controller('athlete', function ($rootScope, $scope, $state, $htt
         $scope.disable_edit = false;
     };
     $scope.save_changes = function(){
+        processTheData("patch", "save", "/api/athlete/"+$scope.id+"/edit", $scope.athlete);
         $scope.disable_edit = true;
     };
 
