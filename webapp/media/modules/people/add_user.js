@@ -8,7 +8,7 @@ window[appName].controller('add_user', function ($rootScope, $scope, $state, $ht
     $scope.addUser = function () {
 
         http.Requests('post', "/api/ui/users/", $scope.user).success(function (response) {
-            bootbox.aler(response.result);
+            bootbox.alert(response.result);
             if ($scope.user.usertype == "athlete") {
                 $state.go("athletes");
             }

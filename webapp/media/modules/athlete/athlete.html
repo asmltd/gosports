@@ -39,7 +39,7 @@
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label" for="db-input">Date of Birth</label>
                         <div class="col-md-9">
-                            <input type="date" id="db-input" name="ht-input" class="form-control" ng-disabled="disable_edit"
+                            <input type="text" id="db-input" name="ht-input" class="form-control" ng-disabled="disable_edit"
                                    placeholder="Date of birth" ng-model="athlete.dateofbirth">
                         </div>
                     </div>
@@ -130,7 +130,7 @@
 
             <div class="col-md-4">
                 <br>
-                <img src="/media/user_images/user.jpg" class="img-avatar" style="width:200px;height:200px;">
+                <img src="{{ athlete.image }}" class="img-avatar" style="width:200px;height:200px;">
                 <h3>{{ athlete.first_name }} {{ athlete.last_name }}</h3>
                 <span>{{ athlete.sport }}</span>
 
