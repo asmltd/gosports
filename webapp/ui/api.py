@@ -51,7 +51,7 @@ class UserViewSet(ViewSet):
             newuser.set_password(password)
             newuser.save()
             if usertype != "":
-                Athlete_details.objects.create(athlete=newuser)
+                Athlete_details.objects.create(athlete=newuser,first_name=newuser.username)
             return Response({"result": "User created successfully", "status": True})
 
         except Exception as e:
