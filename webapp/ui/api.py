@@ -23,7 +23,6 @@ class SessionViewSet(ViewSet):
                 "last_name" : users.last_name,
                 "id" : users.id,
                 "email" : users.email,
-                "image" : str(users.image),
                 "usertype" : users.usertype
             }
 
@@ -47,7 +46,6 @@ class UserViewSet(ViewSet):
                                                       'first_name'] if 'first_name' in data.keys() else "",
                                                   last_name=data['last_name'] if 'last_name' in data.keys() else "",
                                                   email=data['email'] if 'email' in data.keys() else "",
-                                                  image=data['image'] if 'image' in data.keys() else "",
                                                   usertype=usertype)
             password = data['password'] if 'password' in data.keys() else ""
             newuser.set_password(password)
@@ -66,7 +64,7 @@ class UserViewSet(ViewSet):
             users = user_details.objects.all()
             result = []
             for user in users:
-                result.append({"id": user.id, "name": user.username, "email": user.email, "image": str(user.image)})
+                result.append({"id": user.id, "name": user.username, "email": user.email})
             return Response(result)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)

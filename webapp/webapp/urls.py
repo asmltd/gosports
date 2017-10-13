@@ -24,6 +24,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('api.urls')),
     url(r'^', include('ui.urls')),
+    url(r'^api/athlete/', include("athlete.urls", namespace="athletes-api")),
+    url(r'^api/achievements/', include("athlete.achievements.urls", namespace="achievements-api")),
 ]
 
 urlpatterns += [
