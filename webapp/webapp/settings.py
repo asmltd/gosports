@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'api',
     'athlete.achievements',
+    'athlete.finance',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -82,9 +83,9 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gosports',
-        'USER': 'gosports',
-        'PASSWORD': 'g05ports',
+        'NAME': 'gosports_1',
+        'USER': 'gosports_1',
+        'PASSWORD': 'gosports_1',
         'HOST': '',  # Or an IP Address that your DB is hosted on ( default localhost )
         'PORT': '',
     }

@@ -3,13 +3,14 @@ from rest_framework.permissions import IsAuthenticated
 
 from .models import Athlete_achievements
 from .serializers import AchievementsSerializer
-from rest_framework.generics import ListAPIView, RetrieveAPIView, DestroyAPIView, CreateAPIView, RetrieveUpdateAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, DestroyAPIView, CreateAPIView, RetrieveUpdateAPIView, \
+    RetrieveDestroyAPIView
 from rest_framework.pagination import LimitOffsetPagination, PageNumberPagination
 
 # from .pagination import AthleteLimitOffsetPagination, AthletePageNumberPagination ==> for importing custom pagination
 
 #Create a new Achivement
-#url/api/achievements/create/
+#url/api/athlete/achievements/create/
 class AchievementCreateAPIView(CreateAPIView):
     queryset = Athlete_achievements.objects.all()
     serializer_class = AchievementsSerializer
@@ -19,7 +20,7 @@ class AchievementCreateAPIView(CreateAPIView):
 
 
 #Pull out all achievements, this is given with pagination
-#url/api/achievements/
+#url/api/athlete/achievements/
 class AchievementListAPIView(ListAPIView):
     queryset = Athlete_achievements.objects.all()
     pagination_class = LimitOffsetPagination
@@ -30,7 +31,7 @@ class AchievementListAPIView(ListAPIView):
 
 
 #get the achievements of particular athlete
-#url/api/achievements/athlete_id/
+#url/api/athlete/achievements/athlete_id/
 class AchievementGetAthleteAPIView(ListAPIView):
     serializer_class = AchievementsSerializer
 
@@ -44,7 +45,7 @@ class AchievementGetAthleteAPIView(ListAPIView):
 
 
 #Retrieve a particular achievement
-#url/api/achievements/athlete_id/id/ where id = unique id for the achievements
+#url/api/athlete/achievements/athlete_id/id/ where id = unique id for the achievements
 class AchievementDetailAPIView(RetrieveAPIView):
     queryset = Athlete_achievements.objects.all()
     serializer_class = AchievementsSerializer
@@ -62,8 +63,8 @@ class AchievementUpdateAPIView(RetrieveUpdateAPIView):
 
 
 #Delete an achievement
-#url/api/achievements/athlete_id/id/delete
-class AchievementDeleteAPIView(DestroyAPIView):
+#url/api/athlete/achievements/athlete_id/id/delete
+class AchievementDeleteAPIView(RetrieveDestroyAPIView):
     queryset = Athlete_achievements.objects.all()
     serializer_class = AchievementsSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
