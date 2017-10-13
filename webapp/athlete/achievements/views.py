@@ -1,6 +1,9 @@
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+
 from .models import Athlete_achievements
 from .serializers import AchievementsSerializer
-from rest_framework.generics import ListAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView, CreateAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, DestroyAPIView, CreateAPIView, RetrieveUpdateAPIView
 from rest_framework.pagination import LimitOffsetPagination, PageNumberPagination
 
 # from .pagination import AthleteLimitOffsetPagination, AthletePageNumberPagination ==> for importing custom pagination
@@ -10,6 +13,9 @@ from rest_framework.pagination import LimitOffsetPagination, PageNumberPaginatio
 class AchievementCreateAPIView(CreateAPIView):
     queryset = Athlete_achievements.objects.all()
     serializer_class = AchievementsSerializer
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+
 
 
 #Pull out all achievements, this is given with pagination
@@ -18,6 +24,9 @@ class AchievementListAPIView(ListAPIView):
     queryset = Athlete_achievements.objects.all()
     pagination_class = LimitOffsetPagination
     serializer_class = AchievementsSerializer
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+
 
 
 #get the achievements of particular athlete
@@ -26,6 +35,8 @@ class AchievementGetAthleteAPIView(ListAPIView):
     serializer_class = AchievementsSerializer
 
     pagination_class = LimitOffsetPagination
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         athlete = self.kwargs['athlete']
@@ -37,13 +48,17 @@ class AchievementGetAthleteAPIView(ListAPIView):
 class AchievementDetailAPIView(RetrieveAPIView):
     queryset = Athlete_achievements.objects.all()
     serializer_class = AchievementsSerializer
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
 
 
 #update particular achievement
 #url/api/achievements/athlete_id/id/edit
-class AchievementUpdateAPIView(UpdateAPIView):
+class AchievementUpdateAPIView(RetrieveUpdateAPIView):
     queryset = Athlete_achievements.objects.all()
     serializer_class = AchievementsSerializer
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
 
 
 #Delete an achievement
@@ -51,6 +66,8 @@ class AchievementUpdateAPIView(UpdateAPIView):
 class AchievementDeleteAPIView(DestroyAPIView):
     queryset = Athlete_achievements.objects.all()
     serializer_class = AchievementsSerializer
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
 
 
 
