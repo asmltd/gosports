@@ -5,8 +5,8 @@ from .views import *
 router = routers.DefaultRouter()
 
 urlpatterns = [
-     url(r'^$', AthleteListAPIView.as_view(), name='achievements_list'),
-     url(r'^(?P<pk>\d+)/$', AthleteIndividualAPIView.as_view(), name='achievements_details_id'),
-     url(r'^(?P<pk>\d+)/edit$', AthleteEditAPIView.as_view(), name='achievements_edit'),
+     url(r'^$', AthleteListAPIView.as_view(), name='athletes_list'),
+     url(r'^(?P<pk>\d+)/$', AthleteIndividualAPIView.as_view(), name='athletes_id'),
+     url(r'^(?P<pk>\d+)/edit$', AthleteEditAPIView.as_view(), name='athletes_edit'),
 ]
 urlpatterns += router.urls

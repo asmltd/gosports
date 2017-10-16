@@ -6,7 +6,7 @@ router = routers.DefaultRouter()
 
 urlpatterns = [
     url(r'^$', ListManagersAPIView.as_view(), name='managers_list'),
-    url(r'^(?P<pk>\d+)/$', ManagerIndividualAPIView.as_view(), name='achievements_details_id'),
-    url(r'^(?P<pk>\d+)/edit$', ManagerEditAPIView.as_view(), name='achievements_edit'),
+    url(r'^(?P<pk>\d+)/$', ManagerIndividualAPIView.as_view(), name='managers_id'),
+    url(r'^(?P<pk>\d+)/edit$', ManagerEditAPIView.as_view(), name='managers_edit'),
 
 ]
