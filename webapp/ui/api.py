@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import *
 from athlete.models import *
+from managers.models import *
 import json
 
 from .models import *
@@ -50,7 +51,9 @@ class UserViewSet(ViewSet):
             password = data['password'] if 'password' in data.keys() else ""
             newuser.set_password(password)
             newuser.save()
-            if usertype != "":
+            if usertype == "manager":
+                Managers_Details.objects.create(manager=newuser, first_name=newuser.username)
+            if usertype == "athlete":
                 Athlete_details.objects.create(athlete=newuser,first_name=newuser.username)
             return Response({"result": "User created successfully", "status": True})
 

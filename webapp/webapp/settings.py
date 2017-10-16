@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'api',
     'athlete.achievements',
     'athlete.finance',
+    'managers',
 ]
 
 MIDDLEWARE_CLASSES = [
