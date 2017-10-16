@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^api/athlete/achievements/', include("athlete.achievements.urls", namespace="athlete-achievements-api")),
     url(r'^api/athlete/finance/', include("athlete.finance.urls", namespace="athlete-finance-api")),
     url(r'^api/manager/', include("managers.urls", namespace="managers-api")),
+    url(r'^api/partner/', include("partners.urls", namespace="partner-api")),
 ]
 
 urlpatterns += [

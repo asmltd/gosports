@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'athlete.achievements',
     'athlete.finance',
     'managers',
+    'partners',
 ]
 
 MIDDLEWARE_CLASSES = [

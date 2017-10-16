@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.generics import ListAPIView, RetrieveAPIView, RetrieveUpdateAPIView
+from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import IsAuthenticated
 
 from .models import Managers_Details
@@ -17,6 +18,7 @@ from django.shortcuts import render
 class ListManagersAPIView(ListAPIView):
     queryset = Managers_Details.objects.all()
     serializer_class = ManagerSerializer
+    pagination_class = LimitOffsetPagination
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated, )
 

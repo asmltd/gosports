@@ -5,6 +5,7 @@ from rest_framework import status
 from .models import *
 from athlete.models import *
 from managers.models import *
+from partners.models import *
 import json
 
 from .models import *
@@ -55,6 +56,9 @@ class UserViewSet(ViewSet):
                 Managers_Details.objects.create(manager=newuser, first_name=newuser.username)
             if usertype == "athlete":
                 Athlete_details.objects.create(athlete=newuser,first_name=newuser.username)
+            if usertype == "partner":
+                Partner_Details.objects.create(partner=newuser, partner_name=newuser.username)
+
             return Response({"result": "User created successfully", "status": True})
 
         except Exception as e:
