@@ -1,6 +1,6 @@
 window.appName = 'GoSports';
 
-window[appName] = angular.module(appName,['ui.router']);
+window[appName] = angular.module(appName,['ui.router','mwl.calendar', 'ngAnimate', 'ui.bootstrap']);
 
 
 window[appName].config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
@@ -16,9 +16,9 @@ window[appName].config(function ($stateProvider, $urlRouterProvider, $httpProvid
         });
     $stateProvider
         .state('calender', {
-        url:'/calender',
-        templateUrl:'/media/modules/calender/calender.html?v=' + window.version,
-        controller:'calender'
+            url: '/calender',
+            templateUrl:'/media/modules/calender/calender.html?v=' + window.version,
+            controller: 'calender'
         });
 
     $stateProvider

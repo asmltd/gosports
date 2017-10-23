@@ -10,7 +10,9 @@ window[appName].controller('add_user_controller', function($rootScope, $scope, $
         fileUpload.uploadFileToUrl(file,$scope.user,uploadUrl);
     };
     $scope.uploadFile();
+    $scope.myfunction = function(){
 
+    }
         // Posting data to php file
 //        $http({
 //                method: 'POST',
