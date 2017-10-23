@@ -86,7 +86,7 @@ window[appName].service('fileUpload', ['$http', function ($http) {
         fd.append(keys[i], user[keys[i]]);
         }
 
-        $http.post(uploadUrl, fd, {
+        $http.put(uploadUrl, fd, {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         })
