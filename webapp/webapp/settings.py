@@ -87,9 +87,9 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gosports_1',
-        'USER': 'gosports_1',
-        'PASSWORD': 'gosports_1',
+        'NAME': 'gosports',
+        'USER': 'gosports',
+        'PASSWORD': 'g05ports',
         'HOST': '',  # Or an IP Address that your DB is hosted on ( default localhost )
         'PORT': '',
     }

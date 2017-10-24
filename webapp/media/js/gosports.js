@@ -1,6 +1,6 @@
 window.appName = 'GoSports';
 
-window[appName] = angular.module(appName,['ui.router','mwl.calendar', 'ngAnimate', 'ui.bootstrap']);
+window[appName] = angular.module(appName,['ui.router','mwl.calendar', 'ngAnimate', 'ui.bootstrap',]);
 
 
 window[appName].config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
