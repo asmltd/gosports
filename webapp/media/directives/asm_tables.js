@@ -76,9 +76,9 @@ window[appName].directive("asmTables", function (http, message, pin, $rootScope)
                     return false;
                 }
                 $scope.loaded = false;
-                var offset = parseInt($scope.pagination.current) * parseInt($scope.itemperpage);
+                var offset = parseInt($scope.pagination.current) * parseInt($scope.itemperpage) - parseInt($scope.itemperpage);
 
-                $scope.api = $scope.config.api + "?page=" + offset.toString() + "&limit=" + $scope.itemperpage;
+                $scope.api = $scope.config.api + "?offset=" + offset.toString() + "&limit=" + $scope.itemperpage;
                 $scope.api = $scope.api + "&sort=" + $scope.sort + "&order=" + $scope.order + "&filter=" + $scope.filter;
 
                 if ($scope.config.start != undefined && $scope.config.end != undefined) {
