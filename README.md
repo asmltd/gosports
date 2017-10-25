@@ -13,7 +13,7 @@
 
 * Creating MySql Database
 	* Get into Database as root user `mysql -uroot -ppassword`
-	* Create database using the command `mysql>create database gosports_1` (this may change based on DATABASES in django Settings.py)
+	* Create database using the command `mysql>create database gosports_1;` (this may change based on DATABASES in django Settings.py)
 	* grant permissions with `mysql>grant all on gosports_1.* to 'gosports_1'@'localhost' identified by 'PASSWORD';`
 
 ### Starting the Server
