@@ -2,6 +2,27 @@
 
 ## Manage and Monitor http://www.gosportsfoundation.in Athletes
 
+
+## Configuring GoSports project with Heroku:
+
+#### Requirements:
+* You should have a heroku account created
+
+
+### Steps to start with heroku
+* Navigate to webapp/ folder and do git init (this will generate git repo for versioning)
+* Login into your heroku account (use `heroku login`)
+* Create an heroku app using the command `heroku create asm-gosports` here asm-gosports is app name, anything can be given on this place
+* Execute `echo ".py[cod]" > .gitignore` to generate an .gitignore file
+* Now go to webapp/settings.py amd add "asm-gosports.herokuapp.com" to ALLOWED_HOSTS
+* Disable CollectStatic with `heroku config:set DISABLE_COLLECTSTATIC=1` command
+* Add the origin to the app `heroku git:remote -a asm-gosports`
+* Add files to git `git add .`
+* Commit the files `git commit -m "Initial Commit"`
+* Push our code to Heroku `git push heroku master`
+* This will start the app in "https://asm-gosports.herokuapp.com/"
+
+
 ### Setup Working Environment:
 * Make Sure all dependencies and packages are installed for working with Django
 * If not you can follow the installation steps from https://tutorial.djangogirls.org/en/installation/ 
@@ -18,7 +39,7 @@
 
 ### Starting the Server
 * We have to install the reqired packages for running the app, execute the below command to install the required packages
-	*`pip install -r requirements.txt`
+	* `pip install -r requirements.txt`
 * Before starting follow the below steps
 	* `python manage.py makemigrations `
 	* `python manage.py migrate`
