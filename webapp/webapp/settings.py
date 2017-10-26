@@ -25,8 +25,7 @@ SECRET_KEY = 'o+1e^pgo0h@ozvyn@*ihj!l3u2*nqfk)5)%9crb%#98%any!24'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['gosports-test.herokuapp.com']
 
 # Application definition
 
@@ -85,14 +84,22 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'gosports',
+#         'USER': 'gosports',
+#         'PASSWORD': 'g05ports',
+#         'HOST': '',  # Or an IP Address that your DB is hosted on ( default localhost )
+#         'PORT': '',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gosports',
-        'USER': 'gosports',
-        'PASSWORD': 'g05ports',
-        'HOST': '',  # Or an IP Address that your DB is hosted on ( default localhost )
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

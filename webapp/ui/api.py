@@ -101,7 +101,7 @@ class UserViewSet(ViewSet):
             else:
                 return Response({"result": "Failed - User not found", "status": False})
         except Exception as e:
-            print e
+            # print e
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def destroy(self, request, pk=None):

@@ -12,7 +12,7 @@ def module_import(name):
     you.  So say you want to import something like spam.eggs.are.cool, this
     will sort out the full import.
     """
-    mod = __import__(name, globals(), locals(), [], -1)
+    mod = __import__(name, globals(), locals(), [], 0)
     components = name.split('.')
     for comp in components[1:]:
         mod = getattr(mod, comp)
@@ -51,10 +51,10 @@ for app in settings.INSTALLED_APPS:
                 try:
                     router.register(api_url, obj, base_name=obj.base_name if obj.base_name != '' else api_url)
                     logger.debug('Registering: api_url=%s, obj=%s, base_name=%s' % (api_url, obj, obj.base_name))
-                except Exception, ex:
+                except Exception as ex:
                     logger.error(ex)
 
-    except ImportError, e:
+    except ImportError as e:
         logger.debug('Import failed for %s.api... %s' % (app, e))
 
         pass
