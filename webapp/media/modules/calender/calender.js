@@ -10,8 +10,17 @@ window[appName].controller('calender',function($scope,$rootScope){
     vm.viewDate = new Date();
 
 
+     $scope.boxShow = false;
+    $scope.eventcreate=function(){
+     $scope.boxShow = true;
+}
 
-    vm.cellIsOpen = false;
+
+//    vm.cellIsOpen = false;
+//    $scope.eventcreate=function(){
+//    console.log('hiiii');
+//
+//    }
 
 
 

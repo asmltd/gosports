@@ -1,0 +1,45 @@
+<div class="container" >
+    <div class="form-group">
+          <label>First Name</label>
+          <input type="text" name="firstname" ng-model="user.first_name" class="form-control" placeholder="Enter first name" required >
+        <p ng-show="first_name.$dirty && first_name.$invalid" style="color:red" >field is required</p>
+    </div>
+    <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" name="lastname" ng-model="user.last_name" class="form-control" placeholder="Enter last name" required >
+    </div>
+    <div class="form-group">
+        <label>Email:</label>
+        <input type="email" name="email" class="form-control"  ng-model="user.email"  placeholder="Enter email Id" required >
+
+    </div>
+
+
+    <button type="submit" class="btn btn-primary btn-sm" ng-click="updateprofile(user)" >update profile</button>
+    <button type="submit" class="btn btn-primary btn-sm" ng-click="set()" style="float:right" ng-model="pwdchange" >Set Password</button>
+
+
+    <div ng-show="pwdchange">
+        <div class="form-group">
+        <label for="pwd">Current Password:</label>
+        <input type="password" class="form-control" id="pwd"  ng-model="home.pwd"  placeholder="Enter current password" name="pwd" required>
+        </div>
+        <div class="form-group" >
+        <label >New Password:</label>
+        <input type="password" class="form-control"  ng-model="home.newpwd"  placeholder="Enter new Password" name="newpwd" required>
+        </div>
+        <div class="form-group" >
+        <label>Confirm Password:</label>
+        <input type="password" class="form-control"  ng-model="home.conpwd"  placeholder="Enter Confirm Password" name="conpwd" required>
+        </div>
+        <button  type="button" class="btn btn-success btn-sm" ng-click="setpwd(home)" value="ok" >OK</button>
+        </div>
+
+            </div>
+
+
+
+
+
+
+
