@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'partners',
     'athlete.interactions',
     'athlete.performance',
+    'calender'
 ]
 
 MIDDLEWARE_CLASSES = [

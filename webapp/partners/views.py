@@ -12,7 +12,6 @@ from .serializers import PartnerSerializer
 from django.shortcuts import render
 
 # Create your views here.
-
 #url/api/partner/
 class ListPartnerAPIView(ListAPIView):
     queryset = Partner_Details.objects.all()
@@ -21,9 +20,12 @@ class ListPartnerAPIView(ListAPIView):
     authentication_classes = (BasicAuthentication, SessionAuthentication,)
     permission_classes = (IsAuthenticated,)
 
-#Retrieve details about an partner
-#url/api/partner/partner_id/
+
 class PartnerIndividualAPIView(RetrieveAPIView):
+    """
+    Retrieve details about an partner
+    url/api/partner/partner_id/
+    """
     queryset = Partner_Details.objects.all()
     serializer_class = PartnerSerializer
     authentication_classes = (BasicAuthentication, SessionAuthentication,)
