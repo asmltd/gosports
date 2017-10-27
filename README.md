@@ -17,6 +17,8 @@
 	* grant permissions with `mysql>grant all on gosports_1.* to 'gosports_1'@'localhost' identified by 'PASSWORD';`
 
 ### Starting the Server
+* We have to install the reqired packages for running the app, execute the below command to install the required packages
+	*`pip install -r requirements.txt`
 * Before starting follow the below steps
 	* `python manage.py makemigrations `
 	* `python manage.py migrate`

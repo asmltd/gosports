@@ -54,20 +54,24 @@
     view="vm.calendarView"
    view-title="vm.calendarTitle"
     view-date="vm.viewDate" ng-click="eventcreate()">
+       <div ng-show="boxShow">
+           <input type="text" placeholder="enter the event" style="border-color:black">
+        </div>
+
   </mwl-calendar>
 
-     <script type="text/ng-template" id="popup.html">
-    <div class="modal-header">
-        <h3 class="modal-title">Create you event</h3>
-    </div>
-    <div class="modal-body">
-        ceate you event<input type="text" ng-model="name" />
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="ok()">OK</button>
-        <button class="btn" ng-click="cancel()">Cancel</button>
-    </div>
-</script>
+     <!--<script type="text/ng-template" id="popup.html">-->
+    <!--<div class="modal-header">-->
+        <!--<h3 class="modal-title">Create you event</h3>-->
+    <!--</div>-->
+    <!--<div class="modal-body">-->
+        <!--ceate you event<input type="text" ng-model="name" />-->
+    <!--</div>-->
+    <!--<div class="modal-footer">-->
+        <!--<button class="btn btn-primary" ng-click="ok()">OK</button>-->
+        <!--<button class="btn" ng-click="cancel()">Cancel</button>-->
+    <!--</div>-->
+<!--</script>-->
 
 
 

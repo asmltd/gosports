@@ -14,7 +14,6 @@ class user_details(AbstractUser):
                 'first_name': self.first_name,
                 'last_name': self.last_name,
                 'email': self.email,
-                'image': str(self.image),
                 'usertype': self.usertype if self.usertype else "",
                 }
 
