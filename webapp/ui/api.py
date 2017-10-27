@@ -5,6 +5,7 @@ from rest_framework import status
 from .models import *
 from athlete.models import *
 from managers.models import *
+from coach.models import *
 from partners.models import *
 import json
 
@@ -54,6 +55,8 @@ class UserViewSet(ViewSet):
             newuser.save()
             if usertype == "manager":
                 Managers_Details.objects.create(manager=newuser, first_name=newuser.username)
+            if usertype == "coach":
+                Coach_Details.objects.create(coach=newuser, first_name=newuser.username)
             if usertype == "athlete":
                 Athlete_details.objects.create(athlete=newuser,first_name=newuser.username)
             if usertype == "partner":

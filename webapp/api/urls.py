@@ -51,10 +51,10 @@ for app in settings.INSTALLED_APPS:
                 try:
                     router.register(api_url, obj, base_name=obj.base_name if obj.base_name != '' else api_url)
                     logger.debug('Registering: api_url=%s, obj=%s, base_name=%s' % (api_url, obj, obj.base_name))
-                except Exception, ex:
+                except Exception as ex:
                     logger.error(ex)
 
-    except ImportError, e:
+    except ImportError as e:
         logger.debug('Import failed for %s.api... %s' % (app, e))
 
         pass
