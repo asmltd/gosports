@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
+from django.http import HttpResponse
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.decorators import api_view
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveUpdateAPIView, RetrieveDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 
 from .models import Calendar
 from .serializers import CalendarSerializer
+
 
 # Create your views here.
 class ListCalendarAPIView(ListAPIView):
@@ -122,3 +126,15 @@ class DeleteCalenderEventAPIView(RetrieveDestroyAPIView):
     serializer_class = CalendarSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
+
+@api_view(['GET'])
+def Notifyusers(request):
+    """
+    This is used to send notification emails to the users who are having Events for that day
+    :param request:
+    :return:
+    """
+    import notifyusers
+    notifyusers.trigger_email()
+    return HttpResponse("OK")
+

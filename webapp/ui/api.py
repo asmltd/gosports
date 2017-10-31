@@ -93,12 +93,14 @@ class UserViewSet(ViewSet):
                 user = user_details.objects.get(id=pk)
                 data = json.loads(request.body)
 
-                if "first_name" in data:
-                    user.username = data['first_name']
-                if "last_name" in data:
-                    user.username = data['last_name']
+                if "username" in data:
+                    user.username = data['username']
                 if "email" in data:
                     user.email = data['email']
+                if "first_name" in data:
+                    user.first_name = data['first_name']
+                if "last_name" in data:
+                    user.last_name = data['last_name']
                 if "password" in data:
                     user.set_password(data['password'])
                 user.save()
