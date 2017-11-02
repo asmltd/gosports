@@ -8,7 +8,7 @@ from ui.models import *
 
 # Create your models here.
 class Athlete_Interactions(models.Model):
-    athlete = models.ForeignKey(user_details)
+    athlete = models.ForeignKey(user_details, on_delete=models.CASCADE)
     start_time = models.DateTimeField(default=datetime.date.today)
     interaction_subject = models.CharField(max_length=200, default='')
     type_of_interaction = models.CharField(max_length=200, default='')

@@ -8,6 +8,6 @@ import datetime
 # Create your models here.
 class Calendar(models.Model):
     event=models.CharField(max_length=100, default='')
-    user_id=models.ForeignKey(user_details)
+    user_id=models.ForeignKey(user_details, on_delete=models.CASCADE)
     user_type=models.CharField(max_length=10, default='')
     event_date_time = models.DateTimeField(default=datetime.date.today)

@@ -7,7 +7,7 @@ from ui.models import *
 # Create your models here.
 
 class Coach_Details(models.Model):
-    coach = models.ForeignKey(user_details)
+    coach = models.ForeignKey(user_details, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=50, default='')
     last_name = models.CharField(max_length=50, default='')
     location = models.CharField(max_length=50, default='')

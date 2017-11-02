@@ -7,7 +7,7 @@ from ui.models import *
 # Create your models here.
 
 class Managers_Details(models.Model):
-    manager = models.ForeignKey(user_details)
+    manager = models.ForeignKey(user_details, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=50, default='')
     last_name = models.CharField(max_length=50, default='')
     location = models.CharField(max_length=50, default='')

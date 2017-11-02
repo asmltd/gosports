@@ -6,7 +6,7 @@ from ui.models import *
 
 # Create your models here.
 class Athlete_details(models.Model):
-    athlete = models.ForeignKey(user_details)
+    athlete = models.ForeignKey(user_details, on_delete=models.CASCADE)
     sport = models.CharField(max_length=50, default='')
     first_name = models.CharField(max_length=50, default='')
     last_name = models.CharField(max_length=50, default='')

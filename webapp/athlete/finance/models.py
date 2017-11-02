@@ -8,7 +8,7 @@ from ui.models import *
 
 # Create your models here.
 class Athlete_Finance(models.Model):
-    athlete = models.ForeignKey(user_details)
+    athlete = models.ForeignKey(user_details, on_delete=models.CASCADE)
     invoice_date = models.DateField(default=datetime.date.today)
     expense_type = models.CharField(max_length=50, default='')
     particulars = models.CharField(max_length=200, default='')

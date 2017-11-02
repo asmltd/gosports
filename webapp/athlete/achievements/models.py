@@ -8,5 +8,5 @@ from ui.models import *
 # Create your models here.
 
 class Athlete_achievements(models.Model):
-    athlete = models.ForeignKey(user_details)
+    athlete = models.ForeignKey(user_details, on_delete=models.CASCADE)
     achievements = models.CharField(max_length=1000, default='')
