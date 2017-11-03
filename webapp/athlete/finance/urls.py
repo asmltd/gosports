@@ -11,7 +11,7 @@ urlpatterns = [
      url(r'^(?P<athlete>[\w-]+)/$', FinanceGetAthleteAPIView.as_view(), name='finance_details'),
      url(r'^(?P<athlete>[\w-]+)/(?P<pk>\d+)/$', FinanceDetailAPIView.as_view(), name='finance_details_id'),
      url(r'^(?P<athlete>[\w-]+)/(?P<pk>\d+)/edit$', FinanceUpdateAPIView.as_view(), name='finance_edit'),
-     url(r'^(?P<athlete>[\w-]+)/(?P<pk>\d+)/delete$', FinanceDeleteAPIView.as_view(), name='achievements_delete'),
+     url(r'^(?P<athlete>[\w-]+)/(?P<pk>\d+)/delete$', FinanceDeleteAPIView.as_view(), name='finance_delete'),
 ]
 urlpatterns += router.urls
 

@@ -13,4 +13,4 @@ class Athlete_Finance(models.Model):
     expense_type = models.CharField(max_length=50, default='')
     particulars = models.CharField(max_length=200, default='')
     amount = models.CharField(max_length=10, default='')
-    finance_proof = models.FileField(null=True,blank=True,upload_to='user_documents/')
+    finance_proof = models.FileField(null=True,blank=True,upload_to='finance_documents/')

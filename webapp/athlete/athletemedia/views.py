@@ -11,85 +11,85 @@ from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from .serializers import FinanceSerializer
-from .models import Athlete_Finance
+from .serializers import Media_Serializer
+from .models import Athlete_Media
 from webapp.settings import *
 
-class FinanceCreateAPIView(CreateAPIView):
+class AthleteMediaCreateAPIView(CreateAPIView):
     """
-    Create an finance Entry
-    api ==> hostname:port/api/finance/create
+    Create an media Entry
+    api ==> hostname:port/api/media/create
     """
-    queryset = Athlete_Finance.objects.all()
-    serializer_class = FinanceSerializer
+    queryset = Athlete_Media.objects.all()
+    serializer_class = Media_Serializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
 
-class FinanceListAPIView(ListAPIView):
+class AthleteMediaListAPIView(ListAPIView):
     """
-    List all finance Entries
-    api ==> hostname:port/api/finance/
+    List all media Entries
+    api ==> hostname:port/api/media/
     """
-    queryset = Athlete_Finance.objects.all()
+    queryset = Athlete_Media.objects.all()
     pagination_class = LimitOffsetPagination
-    serializer_class = FinanceSerializer
+    serializer_class = Media_Serializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
 
-class FinanceGetAthleteAPIView(ListAPIView):
+class AthleteMediaGetAthleteAPIView(ListAPIView):
     """
-    List all finance Entries related to an athlete
-    api ==> hostname:port/api/finance/athlete_id/
+    List all media Entries related to an athlete
+    api ==> hostname:port/api/media/athlete_id/
     """
-    serializer_class = FinanceSerializer
+    serializer_class = Media_Serializer
     pagination_class = LimitOffsetPagination
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         athlete = self.kwargs['athlete']
-        return Athlete_Finance.objects.filter(athlete_id=athlete)
+        return Athlete_Media.objects.filter(athlete_id=athlete)
 
 
-class FinanceDetailAPIView(RetrieveAPIView):
+class AthleteMediaDetailAPIView(RetrieveAPIView):
     """
-    Retrieve an finance entry
-    api ==> hostname:port/api/finance/athlete_id/id/ where id is "id" of the finance entry
+    Retrieve an media entry
+    api ==> hostname:port/api/media/athlete_id/id/ where id is "id" of the media entry
     """
-    queryset = Athlete_Finance.objects.all()
-    serializer_class = FinanceSerializer
+    queryset = Athlete_Media.objects.all()
+    serializer_class = Media_Serializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
 
-class FinanceUpdateAPIView(RetrieveUpdateAPIView):
+class AthleteMediaUpdateAPIView(RetrieveUpdateAPIView):
     """
-    Edit an finance Entry
-    api ==> hostname:port/api/finance/athlete_id/id/edit/
+    Edit an media Entry
+    api ==> hostname:port/api/media/athlete_id/id/edit/
     """
-    queryset = Athlete_Finance.objects.all()
-    serializer_class = FinanceSerializer
+    queryset = Athlete_Media.objects.all()
+    serializer_class = Media_Serializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
 
-class FinanceDeleteAPIView(RetrieveDestroyAPIView):
+class AthleteMediaDeleteAPIView(RetrieveDestroyAPIView):
     """
-    Delete an finance Entry
-    api ==> hostname:port/api/finance/athlete_id/id/delete/
+    Delete an media Entry
+    api ==> hostname:port/api/media/athlete_id/id/delete/
     this will also delete the document attached to it
     """
-    queryset = Athlete_Finance.objects.all()
-    serializer_class = FinanceSerializer
+    queryset = Athlete_Media.objects.all()
+    serializer_class = Media_Serializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
     def delete(self, request, *args, **kwargs):
         import os
         instance = self.get_object()
-        filepath = instance.finance_proof
+        filepath = instance.mediafile
         filepath_whole = str(MEDIA_ROOT)+ "/"+ str(filepath)
         os.remove(filepath_whole)
         self.perform_destroy(instance)

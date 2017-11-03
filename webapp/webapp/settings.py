@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import time
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,11 +44,12 @@ INSTALLED_APPS = [
     'api',
     'athlete.achievements',
     'athlete.finance',
+    'athlete.interactions',
+    'athlete.performance',
+    'athlete.athletemedia',
     'managers',
     'coach',
     'partners',
-    'athlete.interactions',
-    'athlete.performance',
     'calender',
     'rest_framework_docs',
 ]
@@ -149,4 +151,25 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     )
+}
+
+date_today = time.strftime("%Y-%m-%d")
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/tmp/'+date_today+'-gosports.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
 }
