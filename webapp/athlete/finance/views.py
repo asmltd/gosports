@@ -16,14 +16,21 @@ from .models import Athlete_Finance
 from webapp.settings import *
 
 class FinanceCreateAPIView(CreateAPIView):
+    """
+    Create an finance Entry
+    api ==> hostname:port/api/athlete/create
+    """
     queryset = Athlete_Finance.objects.all()
     serializer_class = FinanceSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
 
-
 class FinanceListAPIView(ListAPIView):
+    """
+    List all finance Entries
+    api ==> hostname:port/api/athlete/
+    """
     queryset = Athlete_Finance.objects.all()
     pagination_class = LimitOffsetPagination
     serializer_class = FinanceSerializer
@@ -32,8 +39,11 @@ class FinanceListAPIView(ListAPIView):
 
 
 class FinanceGetAthleteAPIView(ListAPIView):
+    """
+    List all finance Entries related to an athlete
+    api ==> hostname:port/api/athlete/athlete_id/
+    """
     serializer_class = FinanceSerializer
-
     pagination_class = LimitOffsetPagination
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
@@ -43,8 +53,11 @@ class FinanceGetAthleteAPIView(ListAPIView):
         return Athlete_Finance.objects.filter(athlete_id=athlete)
 
 
-
 class FinanceDetailAPIView(RetrieveAPIView):
+    """
+    Retrieve an finance entry
+    api ==> hostname:port/api/athlete/athlete_id/id/ where id is "id" of the finance entry
+    """
     queryset = Athlete_Finance.objects.all()
     serializer_class = FinanceSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
@@ -52,6 +65,10 @@ class FinanceDetailAPIView(RetrieveAPIView):
 
 
 class FinanceUpdateAPIView(RetrieveUpdateAPIView):
+    """
+    Edit an finance Entry
+    api ==> hostname:port/api/athlete/athlete_id/id/edit/
+    """
     queryset = Athlete_Finance.objects.all()
     serializer_class = FinanceSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
@@ -59,6 +76,11 @@ class FinanceUpdateAPIView(RetrieveUpdateAPIView):
 
 
 class FinanceDeleteAPIView(RetrieveDestroyAPIView):
+    """
+    Delete an finance Entry
+    api ==> hostname:port/api/athlete/athlete_id/id/delete/
+    this will also delete the document attached to it
+    """
     queryset = Athlete_Finance.objects.all()
     serializer_class = FinanceSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
