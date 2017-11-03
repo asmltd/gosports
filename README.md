@@ -27,7 +27,7 @@
 * Start the server using `python manage.py runserver`
 * Now we can hit on http://localhost:8000 to start.
 
-### API Documents to follow
-* ...
+### API Documents
+* You can hit on http://localhost:8000/docs/ api to see the complete documentation of all api's
 
 
