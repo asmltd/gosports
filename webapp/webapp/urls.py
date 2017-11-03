@@ -21,6 +21,7 @@ from django.conf import settings
 from django.views.static import serve
 
 urlpatterns = [
+    url(r'^docs/', include('rest_framework_docs.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('api.urls')),
     url(r'^', include('ui.urls')),
