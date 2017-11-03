@@ -9,19 +9,22 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
 
-#Update particular athlete details
-#url/api/athlete/athlete_id/edit
 class AthleteEditAPIView(RetrieveUpdateAPIView):
+    """
+    Update particular athlete details
+    api ==> hostname:port/api/athlete/athlete_id/edit
+    """
     queryset = Athlete_details.objects.all()
     serializer_class = AthleteSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
 
-#Get all Athletes list
-#url/api/athlete/
-
 class AthleteListAPIView(ListAPIView):
+    """
+    Get all Athletes list
+    api ==> hostname:port/api/athlete/
+    """
     queryset = Athlete_details.objects.all()
     pagination_class = LimitOffsetPagination
     serializer_class = AthleteSerializerPartial
@@ -29,10 +32,11 @@ class AthleteListAPIView(ListAPIView):
     permission_classes = (IsAuthenticated,)
 
 
-
-#Retrieve details about an athlete
-#url/api/athlete/athlete_id/
 class AthleteIndividualAPIView(RetrieveAPIView):
+    """
+    Retrieve details about an athlete
+    api ==> hostname:port/api/athlete/athlete_id/
+    """
     queryset = Athlete_details.objects.all()
     serializer_class = AthleteSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)

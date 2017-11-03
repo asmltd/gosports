@@ -14,8 +14,11 @@ from django.shortcuts import render
 
 # Create your views here.
 
-#url/api/manager/
 class ListManagersAPIView(ListAPIView):
+    """
+    List all Managers
+    api ==> hostname:port/api/manager/
+    """
     queryset = Managers_Details.objects.all()
     serializer_class = ManagerSerializer
     pagination_class = LimitOffsetPagination
@@ -23,19 +26,22 @@ class ListManagersAPIView(ListAPIView):
     permission_classes = (IsAuthenticated, )
 
 
-#Retrieve details about an Manager
-#url/api/manager/manager_id/
 class ManagerIndividualAPIView(RetrieveAPIView):
+    """
+    Retrieve details about an Manager
+    api ==> hostname:port/api/manager/manager_id/
+    """
     queryset = Managers_Details.objects.all()
     serializer_class = ManagerSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
 
-
-#Update particular Manager details
-#url/api/Manager/Manager_id/edit
 class ManagerEditAPIView(RetrieveUpdateAPIView):
+    """
+    Update particular Manager details
+    api ==> hostname:port/api/Manager/Manager_id/edit
+    """
     queryset = Managers_Details.objects.all()
     serializer_class = ManagerSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)

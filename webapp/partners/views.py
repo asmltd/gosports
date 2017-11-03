@@ -11,9 +11,12 @@ from .serializers import PartnerSerializer
 
 from django.shortcuts import render
 
-# Create your views here.
-#url/api/partner/
+
 class ListPartnerAPIView(ListAPIView):
+    """
+    List all Partners
+    api ==> hostname:port/api/partner/
+    """
     queryset = Partner_Details.objects.all()
     serializer_class = PartnerSerializer
     pagination_class = LimitOffsetPagination
@@ -24,16 +27,19 @@ class ListPartnerAPIView(ListAPIView):
 class PartnerIndividualAPIView(RetrieveAPIView):
     """
     Retrieve details about an partner
-    url/api/partner/partner_id/
+    api ==> hostname:port/url/api/partner/partner_id/
     """
     queryset = Partner_Details.objects.all()
     serializer_class = PartnerSerializer
     authentication_classes = (BasicAuthentication, SessionAuthentication,)
     permission_classes = (IsAuthenticated,)
 
-#Update particular partner details
-#url/api/partner/partner_id/edit
+
 class PartnerEditAPIView(RetrieveUpdateAPIView):
+    """
+    Update particular partner details
+    api ==> hostname:port/api/partner/partner_id/edit
+    """
     queryset = Partner_Details.objects.all()
     serializer_class = PartnerSerializer
     authentication_classes = (BasicAuthentication, SessionAuthentication,)

@@ -12,22 +12,22 @@ from django.shortcuts import render
 
 # Create your views here.
 
-#Create a new Achivement
-#url/api/athlete/interactions/create/
-
-
-
 class InteractionCreateAPIView(CreateAPIView):
+    """
+    Create a new Achivement
+    api ==> hostname:port/api/athlete/interactions/create/
+    """
     queryset = Athlete_Interactions.objects.all()
     serializer_class = InteractionsSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
 
-
-#Pull out all interactions, this is given with pagination
-#url/api/athlete/interactions/
 class InteractionListAPIView(ListAPIView):
+    """
+    Pull out all interactions, this is given with pagination
+    api ==> hostname:port/api/athlete/interactions/
+    """
     queryset = Athlete_Interactions.objects.all()
     pagination_class = LimitOffsetPagination
     serializer_class = InteractionsSerializer
@@ -35,12 +35,12 @@ class InteractionListAPIView(ListAPIView):
     permission_classes = (IsAuthenticated,)
 
 
-
-#get the interactions of particular athlete
-#url/api/athlete/interactions/athlete_id/
 class InteractionGetAthleteAPIView(ListAPIView):
+    """
+    get the interactions of particular athlete
+    api ==> hostname:port/api/athlete/interactions/athlete_id/
+    """
     serializer_class = InteractionsSerializer
-
     pagination_class = LimitOffsetPagination
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
@@ -50,27 +50,33 @@ class InteractionGetAthleteAPIView(ListAPIView):
         return Athlete_Interactions.objects.filter(athlete_id=athlete)
 
 
-#Retrieve a particular Interaction
-#url/api/athlete/interactions/athlete_id/id/ where id = unique id for the interactions
 class InteractionDetailAPIView(RetrieveAPIView):
+    """
+    Retrieve a particular Interaction
+    api ==> hostname:port/api/athlete/interactions/athlete_id/id/ where id = unique id for the interactions
+    """
     queryset = Athlete_Interactions.objects.all()
     serializer_class = InteractionsSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
 
-#update particular Interaction
-#url/api/interactions/athlete_id/id/edit
 class InteractionUpdateAPIView(RetrieveUpdateAPIView):
+    """
+    update particular Interaction
+    api ==> hostname:port/api/interactions/athlete_id/id/edit
+    """
     queryset = Athlete_Interactions.objects.all()
     serializer_class = InteractionsSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
 
-#Delete an Interaction
-#url/api/athlete/interactions/athlete_id/id/delete
 class InteractionDeleteAPIView(RetrieveDestroyAPIView):
+    """
+    Delete an Interaction
+    api ==> hostname:port/api/athlete/interactions/athlete_id/id/delete
+    """
     queryset = Athlete_Interactions.objects.all()
     serializer_class = InteractionsSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)

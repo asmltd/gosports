@@ -12,19 +12,22 @@ from django.shortcuts import render
 
 # Create your views here.
 
-#Create a new Achivement
-#url/api/athlete/performance/create/
 class PerformanceCreateAPIView(CreateAPIView):
+    """
+    Create a new Achivement
+    api ==> hostname:port/api/athlete/performance/create/
+    """
     queryset = Athlete_Performance.objects.all()
     serializer_class = PerformanceSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
 
-
-#Pull out all performance, this is given with pagination
-#url/api/athlete/performance/
 class PerformanceListAPIView(ListAPIView):
+    """
+    Pull out all performance, this is given with pagination
+    api ==> hostname:port/api/athlete/performance/
+    """
     queryset = Athlete_Performance.objects.all()
     pagination_class = LimitOffsetPagination
     serializer_class = PerformanceSerializer
@@ -32,10 +35,11 @@ class PerformanceListAPIView(ListAPIView):
     permission_classes = (IsAuthenticated,)
 
 
-
-#get the performance of particular athlete
-#url/api/athlete/performance/athlete_id/
 class PerformanceGetAthleteAPIView(ListAPIView):
+    """
+    get the performance of particular athlete
+    api ==> hostname:port/api/athlete/performance/athlete_id/
+    """
     serializer_class = PerformanceSerializer
 
     pagination_class = LimitOffsetPagination
@@ -47,27 +51,33 @@ class PerformanceGetAthleteAPIView(ListAPIView):
         return Athlete_Performance.objects.filter(athlete_id=athlete)
 
 
-#Retrieve a particular Performance
-#url/api/athlete/performance/athlete_id/id/ where id = unique id for the performance
 class PerformanceDetailAPIView(RetrieveAPIView):
+    """
+    Retrieve a particular Performance
+    api ==> hostname:port/api/athlete/performance/athlete_id/id/ where id = unique id for the performance
+    """
     queryset = Athlete_Performance.objects.all()
     serializer_class = PerformanceSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
 
-#update particular Performance
-#url/api/performance/athlete_id/id/edit
 class PerformanceUpdateAPIView(RetrieveUpdateAPIView):
+    """
+    update particular Performance
+    api ==> hostname:port/api/performance/athlete_id/id/edit
+    """
     queryset = Athlete_Performance.objects.all()
     serializer_class = PerformanceSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
 
-#Delete an Performance
-#url/api/athlete/performance/athlete_id/id/delete
 class PerformanceDeleteAPIView(RetrieveDestroyAPIView):
+    """
+    Delete an Performance
+    api ==> hostname:port/api/athlete/performance/athlete_id/id/delete
+    """
     queryset = Athlete_Performance.objects.all()
     serializer_class = PerformanceSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
