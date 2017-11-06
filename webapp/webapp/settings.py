@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'athlete.interactions',
     'athlete.performance',
     'athlete.athletemedia',
+    'athlete.wellness',
     'managers',
     'coach',
     'partners',
