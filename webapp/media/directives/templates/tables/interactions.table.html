@@ -1,0 +1,54 @@
+<table class="table table-condensed"  >
+
+        <thead class="thead-inverse" style="background:black">
+        <tr>
+                        <th colspan="7">Interaction</th>
+
+                    </tr>
+        </thead>
+    <tbody>
+            <tr>
+            <th>Subject</th>
+            <th>Type</th>
+            <th>Time</th>
+            <th>Interaction</th>
+            <th>Athelet Status</th>
+            <th>Status</th>
+                <th>Action</th>
+            </tr>
+
+
+        <tr ng-repeat="row in list">
+            <td><div ng-hide="row.editable1">{{row.interaction_subject}}</div>
+                <div ng-show="row.editable1"><input type="text" name="subject" ng-model="row.interaction_subject"></div>
+            </td>
+        <td>
+            <div ng-hide="row.editable1">{{row.type_of_interaction}}</div>
+            <div ng-show="row.editable1"><input type="text" name="subject" ng-model="row.type_of_interaction"></div>
+        </td>
+            <td><div ng-hide="row.editable1">{{row.start_time}}</div>
+                <div ng-show="row.editable1"><input type="text" name="subject" ng-model="row.start_time"></div>
+            </td>
+            <td><div ng-hide="row.editable1">{{row.interaction}}</div>
+                <div ng-show="row.editable1"><input type="text" name="subject" ng-model="row.interaction"></div>
+            </td>
+            <td><div ng-hide="row.editable1">{{row.status_of_athlete}}</div>
+                <div ng-show="row.editable1"><input type="text" name="subject" ng-model="row.status_of_athlete"></div>
+            </td>
+            <td><div  ng-hide="row.editable1">{{row.interaction_status}}</div>
+                <div ng-show="row.editable1"><input type="text" name="subject" ng-model="row.interaction_status"></div>
+            </td>
+            <td>
+                <span>
+                    <i class="fa fa-times" aria-hidden="true" ng-click="delete_userinter(row)"></i>
+                    <a><i class="fa fa-pencil-square-o" aria-hidden="true"
+                                      ng-click="save_rowinter(row)" ng-hide="row.editable1"></i>
+                        <i class="fa fa-floppy-o" aria-hidden="true" ng-click="save_rowinter(row)" ng-show="row.editable1"></i></a>
+                </span>
+            </td>
+        </tr>
+        </tbody>
+
+
+
+</table>

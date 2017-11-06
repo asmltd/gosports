@@ -98,6 +98,9 @@ window[appName].directive("asmTables", function (http, message, pin, $rootScope)
                     $scope.pagination.last = $scope.pages[$scope.pages.length - 1];
 
                     $scope.highlight();
+                    for(i=0;i<$scope.list.length;i++){
+                        $scope.list[i].editable = false;
+                    }
 
 
                 });
@@ -457,13 +460,23 @@ window[appName].directive("asmTables", function (http, message, pin, $rootScope)
 
             };
 
-            $scope.delete_user = function (id,name) {
+            $scope.delete_userfinance = function (row) {
                 bootbox.confirm("<i class='fa fa-fw fa-info'></i> Are you sure you want to remove "+name+" ?", function (result) {
                     if (result) {
-                        $scope.update_and_call_back('delete', $scope.config.api + id + "/", '');
+                        $scope.update_and_call_back('delete', 'api/athlete/finance/' + row.athlete+'/'+row.id + "/delete", row);
                     }
 
                 });
+
+            };
+
+            $scope.delete_userinter = function (row){
+                bootbox.confirm("<i class'fa fa-fw fa-info'></i> Are you sure you want to remove "+name+" ?", function (result) {
+                    if (result) {
+                        $scope.update_and_call_back('delete', 'api/athlete/interactions/' + row.athlete+'/'+row.id + "/delete", row);
+                    }
+                });
+
 
             };
 
@@ -476,6 +489,42 @@ window[appName].directive("asmTables", function (http, message, pin, $rootScope)
                 });
 
             };
+
+            $scope.save_row = function(row){
+    console.log(row);
+    if(row.editable==false){
+        row.editable=true;
+    }else{
+    console.log('api/athlete/finance/'+row.athlete + '/'+ row.id + "/edit")
+    bootbox.confirm("<i class='fa fa-fw fa-info'></i> Are you sure you want to save changes ?", function (result) {
+                    if (result) {
+                        $scope.update_and_call_back('patch','api/athlete/finance/'+row.athlete + '/'+ row.id + "/edit", row);
+                    }
+
+                });
+        row.editable=false;
+
+
+    }
+
+    };
+    $scope.save_rowinter = function(row){
+    console.log (row);
+    if(row.editable1==false){
+    row.editable1=true;
+    }else{
+    bootbox.confirm("<i class='fa fa-fw fa-info'></i> Are you sure you want to save changes ?", function (result) {
+                    if (result) {
+                        $scope.update_and_call_back('patch','api/athlete/interactions/'+row.athlete + '/'+ row.id + "/edit", row);
+                    }
+
+                });
+        row.editable1=false;
+    }
+
+
+    };
+
 
             /* update the table operations and call the data back */
             $scope.update_and_call_back = function (method, api, param) {
@@ -577,4 +626,12 @@ window[appName].directive("asmTables", function (http, message, pin, $rootScope)
 
         }
     };
+
+
+//        $scope.editable=false;
+//        $scope.edit_userhtml=function(){
+//        console.log('hiii this is edit fields');
+//        $scope.editable=true;
+//    }
+
 });

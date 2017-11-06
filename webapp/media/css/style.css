@@ -2942,7 +2942,7 @@ fieldset[disabled] a.btn {
 .nav-tabs .nav-link.active:focus,
 .nav-tabs .nav-link.active:hover {
     color: #607d8b;
-    background-color: #e4e5e6;
+    background-color: white;
     border-color: #ddd #ddd transparent
 }
 .nav-tabs .dropdown-menu {
@@ -3190,7 +3190,7 @@ body.navbar-fixed header.navbar {
 .card-footer,
 .card-header {
     padding: .75rem 1.25rem;
-    background-color: #eceff1
+    background-color: #ffffff;
 }
 .card-title {
     margin-bottom: .75rem
@@ -3213,9 +3213,7 @@ body.navbar-fixed header.navbar {
     margin-right: -.625rem;
     margin-left: -.625rem
 }
-.card-header {
-    border-bottom: 1px solid #cfd8dc
-}
+
 .card-footer {
     border-top: 1px solid #cfd8dc
 }

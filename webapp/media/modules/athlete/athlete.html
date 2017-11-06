@@ -12,42 +12,36 @@
 
             <div class="col-md-8">
                 <br>
-                <form action="" method="post" enctype="multipart/form-data"
-                      class="form-horizontal ng-pristine ng-valid">
+                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal ng-pristine ng-valid">
 
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label" for="fn-input">First name</label>
                         <div class="col-md-9">
-                            <input type="text" id="fn-input" name="fn-input" class="form-control" ng-disabled="disable_edit"
-                                   placeholder="First name" ng-model="athlete.first_name">
+                            <input type="text" id="fn-input" name="fn-input" class="form-control" ng-disabled="disable_edit" placeholder="First name" ng-model="athlete.first_name">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label" for="ln-input">Last name</label>
                         <div class="col-md-9">
-                            <input type="text" id="ln-input" name="ln-input" class="form-control" ng-disabled="disable_edit"
-                                   placeholder="Last name" ng-model="athlete.last_name">
+                            <input type="text" id="ln-input" name="ln-input" class="form-control" ng-disabled="disable_edit" placeholder="Last name" ng-model="athlete.last_name">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label" for="ht-input">Home town</label>
                         <div class="col-md-9">
-                            <input type="text" id="ht-input" name="ht-input" class="form-control" ng-disabled="disable_edit"
-                                   placeholder="Home town" ng-model="athlete.hometown">
+                            <input type="text" id="ht-input" name="ht-input" class="form-control" ng-disabled="disable_edit" placeholder="Home town" ng-model="athlete.hometown">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label" for="db-input">Date of Birth</label>
                         <div class="col-md-9">
-                            <input type="text" id="db-input" name="ht-input" class="form-control" ng-disabled="disable_edit"
-                                   placeholder="Date of birth" ng-model="athlete.dateofbirth">
+                            <input type="text" id="db-input" name="ht-input" class="form-control" ng-disabled="disable_edit" placeholder="Date of birth" ng-model="athlete.dateofbirth">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label" for="ssinput">Father name</label>
                         <div class="col-md-9">
-                            <input type="text" id="ssinput" name="ss-input" class="form-control" ng-disabled="disable_edit"
-                                   placeholder="Supporting staff" ng-model="athlete.father_name">
+                            <input type="text" id="ssinput" name="ss-input" class="form-control" ng-disabled="disable_edit" placeholder="Supporting staff" ng-model="athlete.father_name">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -67,15 +61,13 @@
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label" for="ch-input">Coach</label>
                         <div class="col-md-9">
-                            <input type="text" id="ch-input" name="ch-input" class="form-control" ng-disabled="disable_edit"
-                                   placeholder="Coach" ng-model="athlete.coach">
+                            <input type="text" id="ch-input" name="ch-input" class="form-control" ng-disabled="disable_edit" placeholder="Coach" ng-model="athlete.coach">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label" for="ss-input">Supporting staff</label>
                         <div class="col-md-9">
-                            <input type="text" id="ss-input" name="ss-input" class="form-control" ng-disabled="disable_edit"
-                                   placeholder="Supporting staff" ng-model="athlete.staff">
+                            <input type="text" id="ss-input" name="ss-input" class="form-control" ng-disabled="disable_edit" placeholder="Supporting staff" ng-model="athlete.staff">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -87,64 +79,64 @@
                     </div>
 
 
-                <div class="col-md-offset-9">
-                    <button type="button" class="btn btn-info btn-sm buttonplace" data-toggle="collapse" data-target="#viewmore">View more</button>
-                </div>
+                    <div class="col-md-offset-9">
+                        <button type="button" class="btn btn-info btn-sm buttonplace" data-toggle="collapse" data-target="#viewmore">View more</button>
+                    </div>
                     <br>
-                <div id="viewmore" class="collapse">
-                    <h4>User Description</h4>
-                                        <div class="form-group row">
-                        <label class="col-md-3 ">International Debute</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" placeholder="International Debute" ng-disabled="disable_edit" ng-model="athlete.international_debute">
+                    <div id="viewmore" class="collapse">
+                        <h4>User Description</h4>
+                        <div class="form-group row">
+                            <label class="col-md-3 ">International Debute</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" placeholder="International Debute" ng-disabled="disable_edit" ng-model="athlete.international_debute">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Career Best Rank</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" ng-model="athlete.bestrank" placeholder="Career Best Rank" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Current Rank</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" ng-model="athlete.rank" placeholder="Current Rank" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Short Term Goal</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" ng-model="athlete.short_term_goal" placeholder="Short Term Goal" ng-disabled="disable_edit">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Long Term Goal</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" ng-model="athlete.long_term_goal" placeholder="Long Term Goal" ng-disabled="disable_edit">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Other Details 1</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" placeholder="Other Details" ng-disabled="disable_edit" ng-model="athlete.details1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Other Details 2</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" placeholder="Other Details" ng-disabled="disable_edit" ng-model="athlete.details2">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Other Details 3</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" placeholder="Other Details" ng-disabled="disable_edit" ng-model="athlete.details3">
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-md-3 form-control-label">Career Best Rank</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" ng-model="athlete.bestrank" placeholder="Career Best Rank" ng-disabled="true">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-3 form-control-label">Current Rank</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" ng-model="athlete.rank" placeholder="Current Rank" ng-disabled="true">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-3 form-control-label">Short Term Goal</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" ng-model="athlete.short_term_goal" placeholder="Short Term Goal" ng-disabled="disable_edit">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-3 form-control-label">Long Term Goal</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" ng-model="athlete.long_term_goal" placeholder="Long Term Goal" ng-disabled="disable_edit">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-3 form-control-label">Other Details 1</label>
-                        <div class="col-md-9" >
-                            <input type="text" class="form-control" placeholder="Other Details"  ng-disabled="disable_edit" ng-model="athlete.details1">
-                        </div>
-                    </div>
-                     <div class="form-group row">
-                        <label class="col-md-3 form-control-label">Other Details 2</label>
-                        <div class="col-md-9" >
-                            <input type="text" class="form-control" placeholder="Other Details"  ng-disabled="disable_edit" ng-model="athlete.details2">
-                        </div>
-                    </div>
-                     <div class="form-group row">
-                        <label class="col-md-3 form-control-label">Other Details 3</label>
-                        <div class="col-md-9" >
-                            <input type="text" class="form-control" placeholder="Other Details"  ng-disabled="disable_edit" ng-model="athlete.details3">
-                        </div>
-                    </div>
-                </div>
                     <!--<div class="col-md-offset-3">-->
                     <!--<button type="button" class="btn btn-info btn-sm" >View Less</button>-->
-                <!--</div>-->
+                    <!--</div>-->
 
                 </form>
 
@@ -160,61 +152,219 @@
                 <div class="fc-button-group">
                     <button class="btn-info" ng-show="disable_edit==true" ng-click="enable_edit()"><i class="fa fa-edit"></i>&nbsp;Edit</button>
                     <button class="btn-info" ng-show="disable_edit==false" ng-click="save_changes()"><i class="fa fa-save"></i>&nbsp;Save</button>
-                    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" file-model="myFile" ng-model="athlete.image">
                 </div>
+                <form >
+                    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" file-model="myFile"  ng-model="athlete.image">
+                    <button type="button" ng-click="save_changes1()">upload photo</button>
+                </form>
             </div>
 
 
         </div>
     </div>
 </div>
+<div class="card-block">
+
 <div class="row">
-    <div class="card-block">
-
-
-            <div class="col-md-12">
-              <ul class="nav nav-tabs" role="tablist">
+        <div class="col-md-12">
+            <ul class="nav nav-tabs navtab" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link" ng-class="get_active('achievement')" ng-click="change_tab('achievement')">Achievements</a>
+                    <a class="nav-link" ng-class="get_active('achievement')" ng-click="change_tab('achievement')">Achievements</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" ng-class="get_active('finance')" ng-click="change_tab('finance')">Finance</a>
+                    <a class="nav-link" ng-class="get_active('finance')" ng-click="change_tab('finance')">Finance</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" ng-class="get_active('interactions')" ng-click="change_tab('interactions')">Interactions</a>
+                    <a class="nav-link" ng-class="get_active('interactions')" ng-click="change_tab('interactions')">Interactions</a>
                 </li>
-              </ul>
+                <li class="nav-item">
+                    <a class="nav-link" ng-class="get_active('performance')" ng-click="change_tab('performance')">Performance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ng-click="change_tab('wellness')" ng-class="get_active('wellness')">Wellness</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ng-click="change_tab('medicalandscience')" ng-class="get_active('medicalandscience')">Medical And Science</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ng-click="change_tab('media')" ng-class="get_active('media')">Media</a>
+                </li>
+            </ul>
+        </div>
+</div>
+        <div class="row">
 
-              <div class="tab-content">
-                <div class="tab-pane" ng-class="get_active('achievement')"  role="tabpanel" >
+            <div class="tab-content">
+                <div class="tab-pane" ng-class="get_active('achievement')" role="tabpanel">
                     <div class="col-lg-12">
-        <div class="card">
-            <asm-tables options="achievement_table"></asm-tables>
-        </div>
-    </div>
-                </div>
-                <div class="tab-pane" ng-class="get_active('finance')"  role="tabpanel" >
-                  <div class="col-lg-12">
-        <div class="card">
-            <asm-tables options="finance_table"></asm-tables>
-        </div>
-    </div>
-                </div>
-                <div class="tab-pane" ng-class="get_active('interactions')"  role="tabpanel" >
-                 <div class="col-lg-12">
-        <div class="card">
-            <asm-tables options="interactions_table"></asm-tables>
-        </div>
-    </div>
-                </div>
-              </div>
+                        <div class="card">
+                            <asm-tables options="achievement_table"></asm-tables>
 
-    </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" ng-class="get_active('performance')" role="tabpanel">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <asm-tables options="performance_table"></asm-tables>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" ng-class="get_active('wellness')" role="tabpanel">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <asm-tables options="wellness_table"></asm-tables>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" ng-class="get_active('medicalandscience')" role="tabpanel">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <asm-tables options="medicalandscience_table"></asm-tables>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" ng-class="get_active('media')" role="tabpanel">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <asm-tables options="media_table"></asm-tables>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" ng-class="get_active('finance')" role="tabpanel">
+                    <div class="col-lg-12">
+                        <div class="card cards">
+                            <asm-tables options="finance_table"></asm-tables>
+
+                            <input type="button" name="add" value="Add" class="btn btn-primary btn-sm buttonclass" data-toggle="modal" data-target="#myModal1">
+                            <div class="modal fade" id="myModal1" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Create new Finance</h4>
+                                        </div>
+                                        <div class="modal-body modalchange">
+                                            <div class="form-group">
+                                                <label>Date</label>
+                                                <input type="date" class="form-control" name="invoice_date" ng-model="newfinance.invoice_date" >
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Expensive Type</label>
+                                                <input type="text" class="form-control" name="expense_type" ng-model="newfinance.expense_type">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Particulars</label>
+                                                <input type="text" class="form-control" name="particulars" ng-model="newfinance.particulars">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Amount</label>
+                                                <input type="text" class="form-control" name="amount" ng-model="newfinance.amount">
+                                            </div>
+
+
+                                            <div>
+                                                 <button type="button"  class="btn btn-danger btn-md buttonside" ng-click="cancel()" data-dismiss="modal">Cancel</button>
+                                                <input type="button" class="btn btn-success btn-md buttonside" ng-click="save_finance()" value="OK" data-dismiss="modal">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" ng-class="get_active('interactions')" role="tabpanel">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <asm-tables options="interactions_table"></asm-tables>
+                            <input type="button" name="add" value="Add" class="btn btn-primary btn-sm buttonclass" data-toggle="modal" data-target="#myModal2">
+                            <div class="modal fade" id="myModal2" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Create new Interaction</h4>
+                                        </div>
+                                        <div class="modal-body modalchange1">
+                                            <div class="form-group">
+                                                <label>Subject</label>
+                                                <input type="text" class="form-control" name="invoice_date" ng-model="newinteraction.interaction_subject">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Type</label>
+                                                <input type="text" class="form-control" name="expense_type" ng-model="newinteraction.type_of_interaction">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Time</label>
+                                                <input type="date" class="form-control" name="particulars" ng-model="newinteraction.start_time">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Interaction</label>
+                                                <input type="text" class="form-control" name="amount" ng-model="newinteraction.interaction">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Athelet Status</label>
+                                                <input type="text" class="form-control" name="amount" ng-model="newinteraction.status_of_athlete">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Status</label>
+                                                <input type="text" class="form-control" name="amount" ng-model="newinteraction.interaction_status">
+                                            </div>
+
+
+                                            <div>
+                                                <input type="button" class="btn btn-success btn-md buttonside"  ng-click="save_interaction()" data-dismiss="modal" value="OK">
+                                                <button type="button"  class="btn btn-danger btn-md buttonside" ng-click="cancel()" data-dismiss="modal">Cancel</button>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
 </div>
+<style>
+    .navtab{
+        background: #63c2de;
+        color: white;
+        font-size: 15px;
+         overflow-wrap: normal;
 
+      }
+      .buttonclass{
+      margin-bottom: 30px;
+    margin-left: 673px;
+      }
+      .buttonside{
+      float:right;
+          margin-right: 20px;
+      }
+      .modalchange{
+      height:391px;
 
+      }
+      .modalchange1{
+      height:550px;
+      }
 
+</style>
 
 

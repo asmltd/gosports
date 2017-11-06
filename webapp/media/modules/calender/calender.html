@@ -53,12 +53,44 @@
     events="vm.events"
     view="vm.calendarView"
    view-title="vm.calendarTitle"
-    view-date="vm.viewDate" ng-click="eventcreate()">
-       <div ng-show="boxShow">
-           <input type="text" placeholder="enter the event" style="border-color:black">
-        </div>
+    view-date="vm.viewDate"
+     day-view-start="06:00"
+    day-view-end="22:59" ng-click="eventcreate()"  data-toggle="modal" data-target="#myModal">
+
+
+
 
   </mwl-calendar>
+      <div ng-show="editorEnabled" class="container">
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+            {{user.event}}+{{$scope.calendarView = 'month'}};
+.event_date_time}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+         </div>
+
+     </div>
+
 
      <!--<script type="text/ng-template" id="popup.html">-->
     <!--<div class="modal-header">-->
@@ -75,5 +107,11 @@
 
 
 
-</div>
+ <!--<style>-->
+     <!--input {-->
+    <!--display: initial !important;-->
+    <!--width: auto !important;-->
+    <!--margin: 0 5px 0 0 !important;-->
+<!--}-->
+ <!--</style>-->
 

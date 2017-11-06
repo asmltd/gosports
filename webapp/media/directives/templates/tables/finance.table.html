@@ -1,13 +1,54 @@
-<table class="table table-condensed">
-                    <thead class="thead-inverse">
-                    <tr>
-                        <th>Finance</th>
+<table class="table table-condensed"  >
+
+        <thead class="thead-inverse" style="background:black">
+        <tr>
+                        <th colspan="5" >Finance</th>
 
                     </tr>
-                    </thead>
-                    <tr ng-repeat="row in list">
+        </thead>
+    <tbody>
+            <tr>
+            <th>Date</th>
+            <th>Expensive Type</th>
+            <th>Particulars</th>
+            <th>Amount</th>
+            <th> Action</th>
+            </tr>
 
-                        <td>{{row.achievements}}</td>
 
-                    </tr>
-                </table>
+        <tr ng-repeat="row in list">
+            <td>
+                <div ng-hide="row.editable">{{row.invoice_date}}</div>
+                <div ng-show="row.editable" ><input type="text" ng-model="row.invoice_date" ng-click="editable=false"></div>
+            </td>
+            <td>
+                <div ng-hide="row.editable">{{row.expense_type}}</div>
+                <div ng-show="row.editable"><input type="text" name="type" ng-model="row.expense_type" ng-dblclick="editable=false"> </div>
+            </td>
+            <td>
+                <div ng-hide="row.editable">{{row.particulars}}</div>
+                <div ng-show="row.editable"><input type="text" name="particulars" ng-model="row.particulars"></div>
+            </td>
+            <td><div ng-hide="row.editable">{{row.amount}}</div>
+                 <div ng-show="row.editable" ><input type="text" name="amount" ng-model="row.amount"></div></td>
+            <td>
+                            <span style="">
+                                <i class="fa fa-times" aria-hidden="true" ng-click="delete_userfinance(row)"></i>
+
+
+
+                                <a><i class="fa fa-pencil-square-o" aria-hidden="true"
+
+                                      ng-click="save_row(row)" ng-hide="row.editable"></i><i class="fa fa-floppy-o" aria-hidden="true" ng-click="save_row(row)" ng-show="row.editable"></i></a>
+
+                            </span>
+            </td>
+        </tr>
+        </tbody>
+
+
+
+</table>
+
+
+

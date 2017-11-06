@@ -5,16 +5,16 @@ function processTheData(method, action, url, parameter) {
 
         http.Requests(method, url, parameter).success(function (response) {
 
-
+console.log(action);
             switch (action) {
 
-                case 'user':
+                case 'session':
                     $scope.user = response;
-                    console.log($scope.athlete);
+                    console.log($scope.user);
                     break;
 
                 case 'save':
-                    processTheData("get", "athlete", "/api/athlete/" + $scope.id + "/", {});
+                    processTheData("get", "users", "/api/ui/session/", {});
                     break;
 
 
@@ -22,15 +22,17 @@ function processTheData(method, action, url, parameter) {
         });
     }
 
-    processTheData("get", "user", "/api/ui/session/", {});
+   processTheData("get", "session", "/api/ui/session/", {});
+
+
+//processTheData("get", "users", "/api/users/" + $scope.id + "/", {});
+
+$scope.updateprofile=function(){
 
 
 
-
-$scope.updateprofile=function(home){
-console.log('hi this is upadate profile');
-$scope.h2=home;
-console.log($scope.h2);
+processTheData("patch", "save", "/api/ui/users/" + $scope.user.id+"/",$scope.user );
+console.log('data is changed');
 
 
 
