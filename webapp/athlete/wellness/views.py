@@ -14,7 +14,7 @@ from django.shortcuts import render
 
 class WellnessCreateAPIView(CreateAPIView):
     """
-    Create a new Achivement
+    Create a new Wellness Record
     api ==> hostname:port/api/athlete/wellness/create/
     """
     queryset = Wellness_Details.objects.all()
