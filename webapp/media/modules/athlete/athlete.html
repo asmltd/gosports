@@ -209,6 +209,61 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <asm-tables options="performance_table"></asm-tables>
+                            <input type="button" name="add" value="Add" class="btn btn-primary btn-sm buttonclass" data-toggle="modal" data-target="#myModal3">
+                            <div class="modal fade" id="myModal3" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Create new Performance</h4>
+                                        </div>
+                                        <div class="modal-body modalperfor">
+                                            <div class="form-group">
+                                                <label>Competition</label>
+                                                <input type="text" class="form-control" name="invoice_date" ng-model="newperformance.competition">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Start Date</label>
+                                                <input type="text" class="form-control" name="expense_type" ng-model="newperformance.start_date">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>End Date</label>
+                                                <input type="date" class="form-control" name="particulars" ng-model="newperformance.end_date">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Location</label>
+                                                <input type="text" class="form-control" name="amount" ng-model="newperformance.location">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Event</label>
+                                                <input type="text" class="form-control" name="amount" ng-model="newperformance.event">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Competition Level</label>
+                                                <input type="text" class="form-control" name="amount" ng-model="newperformance.competition_level">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Scorel</label>
+                                                <input type="text" class="form-control" name="amount" ng-model="newperformance.score">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Position</label>
+                                                <input type="text" class="form-control" name="amount" ng-model="newperformance.position">
+                                            </div>
+
+
+                                            <div>
+                                                <input type="button" class="btn btn-success btn-md buttonside"  ng-click="save_performance()" data-dismiss="modal" value="OK">
+                                                <button type="button"  class="btn btn-danger btn-md buttonside" ng-click="cancel()" data-dismiss="modal">Cancel</button>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -351,7 +406,8 @@
       }
       .buttonclass{
       margin-bottom: 30px;
-    margin-left: 673px;
+    margin-left: 93%;
+    <!--px;-->
       }
       .buttonside{
       float:right;
@@ -363,6 +419,9 @@
       }
       .modalchange1{
       height:550px;
+      }
+      .modalperfor{
+      height:708px;
       }
 
 </style>

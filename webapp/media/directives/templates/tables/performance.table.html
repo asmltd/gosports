@@ -2,19 +2,47 @@
 
         <thead class="thead-inverse" >
         <tr>
-                        <th colspan="3" >Performance</th>
+                        <th colspan="10" >Performance</th>
 
                     </tr>
         </thead>
     <tbody>
             <tr>
-            <th>Event Name</th>
-            <th>Data Metrics</th>
-            <th>Score</th>
+
+                <th>Competition</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Location</th>
+                <th>Event</th>
+                <th>Competition Level</th>
+                <th>Score</th>
+                <th>Position</th>
+                <th>Action</th>
             </tr>
 
 
         <tr ng-repeat="row in list">
+
+            <td>{{row.competition}}</td>
+            <td>{{row.start_date}}</td>
+            <td>{{row.end_date}}</td>
+            <td>{{row.location}}</td>
+            <td>{{row.event}}</td>
+            <td>{{row.competition_level}}</td>
+            <td>{{row.score}}</td>
+            <td>{{row.position}}</td>
+            <td>
+                 <span style="">
+                                <i class="fa fa-times" aria-hidden="true" ng-click="delete_userperformance(row)"></i>
+
+
+
+                                <a><i class="fa fa-pencil-square-o" aria-hidden="true"
+
+                                      ng-click="save_rowperformance(row)" ng-hide="row.editable"></i><i class="fa fa-floppy-o" aria-hidden="true" ng-click="save_rowperformance(row)" ng-show="row.editable"></i></a>
+
+                            </span>
+            </td>
         </tr>
     </tbody>
 </table>

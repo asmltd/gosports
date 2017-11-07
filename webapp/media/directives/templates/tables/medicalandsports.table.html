@@ -1,0 +1,42 @@
+<table class="table table-condensed"  >
+
+        <thead class="thead-inverse" >
+        <tr>
+                        <th colspan="7" >Medical And Sports</th>
+
+                    </tr>
+        </thead>
+    <tbody>
+            <tr>
+            <th>Consultation/Test</th>
+            <th>Consultant/Facility visited</th>
+            <th>Initial /Follow-up</th>
+            <th>Qaurter</th>
+            <th>Due Date</th>
+            <th>Start Date</th>
+                <th>Action</th>
+            </tr>
+
+
+        <tr ng-repeat="row in list">
+            <td>{{row.consultation_or_test}}</td>
+             <td>{{row.consultant_or_faculty}}</td>
+             <td>{{row.doagnose_type}}</td>
+             <td>{{row.quarter}}</td>
+             <td>{{row.due_date}}</td>
+             <td>{{row.actual_date}}</td>
+            <td>
+                  <span style="">
+                                <i class="fa fa-times" aria-hidden="true" ng-click="delete_usermedical(row)"></i>
+
+
+
+                                <a><i class="fa fa-pencil-square-o" aria-hidden="true"
+
+                                      ng-click="save_rowmedical(row)" ng-hide="row.editable"></i><i class="fa fa-floppy-o" aria-hidden="true" ng-click="save_rowmedical(row)" ng-show="row.editable"></i></a>
+
+                            </span>
+            </td>
+        </tr>
+    </tbody>
+</table>

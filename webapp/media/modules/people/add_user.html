@@ -9,49 +9,60 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-<form class="col-md-6 offset-md-3" ng-submit="addUser()">
+<form name="newuser" class="col-md-6 offset-md-3" ng-submit="addUser(user)">
     <div class="form-group row">
         <label class="form-control-label" for="user_name">Name</label>
         <div class="input-group">
-            <input type="text" class="form-control" id="user_name" placeholder="Username" ng-model="user.username">
+            <input type="text" class="form-control" id="user_name" placeholder="Username" name="username" ng-model="user.username" ng-trim="false" required>
             <span class="input-group-addon">
                 <i class="fa fa-user"></i>
             </span>
-        </div>
+
+            </div>
+        <p ng-show="newuser.username.$untouched && newuser.username.$invalid" style="color:red">Field is required.</p>
     </div>
     <div class="form-group row">
         <label class="form-control-label" for="formGroupExampleInput2">Email</label>
         <div class="input-group">
-            <input type="email" class="form-control" id="formGroupExampleInput2" placeholder="Email" ng-model="user.email">
+            <input type="email" class="form-control" name="Email" id="formGroupExampleInput2" placeholder="Email" ng-model="user.email" ng-trim="false" required>
             <span class="input-group-addon">
                 <i class="fa fa-envelope"></i>
             </span>
         </div>
+        <span ng-show="newuser.Email.$error.required" style="color:red">Enter the Emailid</span>
+        <span ng-show="newuser.Email.$error.email"  style="color:red">Invalid Emailid</span>
     </div>
     <div class="form-group row">
         <label class="form-control-label" for="exampleInputPassword1">Password</label>
         <div class="input-group">
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="user.password">
+            <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password" ng-model="user.password" ng-trim="false" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
             <span class="input-group-addon">
                 <i class="fa fa-asterisk"></i>
             </span>
         </div>
+         <span ng-show="newuser.password.$error.required && newuser.password.$untouched" style="color:red">Field is required</span>
+   <!--<span ng-show="!newuser.password.$error.required && (newuser.password.$error.minlength || newuser.password.$error.maxlength) && newuser.password.$dirty" style="color:green">Passwords must be between 8 and 20 characters.</span>-->
+   <!--<span ng-show="!newuser.password.$error.required && !newuser.password.$error.minlength && !newuser.password.$error.maxlength && newuser.password.$error.pattern && newuser.password.$dirty" style="color:red">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</span>-->
     </div>
 
     <div class="form-group row">
         <label class="form-control-label" for="exampleInputPassword2">Confirm -Password</label>
         <div class="input-group">
-            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Confirm Password" ng-model="user.repassword">
+            <input type="password" class="form-control" name="password_c"id="exampleInputPassword2" placeholder="Confirm Password" ng-model="user.repassword"
+            ng-trim="false" required>
             <span class="input-group-addon">
                 <i class="fa fa-asterisk"></i>
             </span>
+
         </div>
+        <span ng-show="newuser.password_c.$error.required && newuser.password_c.$untouched" style="color:red">Please confirm your password.</span>
+        <span style="color:red">{{unmatch}}</span>
     </div>
 
     <div class="form-group row">
         <label class="form-control-label" for="usertype">User type</label>
         <div class="input-group">
-            <select ng-model="user.usertype" class="form-control" id="usertype">
+            <select ng-model="user.usertype" class="form-control" id="usertype" required>
                 <option value="athlete">Athlete</option>
                 <option value="partner">Partner</option>
                 <option value="manager">Manager</option>
@@ -61,6 +72,7 @@
                 <i class="fa fa-users"></i>
             </span>
         </div>
+
     </div>
 
     <div class="form-group row" ng-show="false">
@@ -69,7 +81,7 @@
                file-model="myFile" ng-model="user.image">
     </div>
 
-    <input class="btn btn-primary pull-right" type="submit" value="Create">
+    <input class="btn btn-primary pull-right" type="submit" value="Create" ng-disabled="newuser.$invalid" >
 
 </form>
 </div>

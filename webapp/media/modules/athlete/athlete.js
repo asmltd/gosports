@@ -41,6 +41,25 @@ window[appName].controller('athlete', function($rootScope, $scope, $state, $http
                         "title": "",
                         "auto_reload": true,
                     };
+                    break;
+                case 'save_performance':
+                    $scope.performance_table = {
+                        "api": "/api/athlete/performance/" + $scope.id + "/",
+                        "type": "performance",
+
+                        "title": "",
+                        "auto_reload": true,
+                    };
+                    break;
+                    case 'save_medical':
+                      $scope.medicalandscience_table = {
+                        "api": "/api/athlete/medical/" + $scope.id + "/",
+                        "type": "medicalandsports",
+
+                        "title": "",
+                        "auto_reload": true,
+                    };
+                    break;
 
 
             }
@@ -107,8 +126,8 @@ window[appName].controller('athlete', function($rootScope, $scope, $state, $http
         "auto_reload": true,
     };
      $scope.medicalandscience_table = {
-        "api": "/api/athlete/medicalandscience/" + $scope.id + "/",
-        "type": "medicalandscience",
+        "api": "/api/athlete/medical/" + $scope.id + "/",
+        "type": "medicalandsports",
 
         "title": "",
         "auto_reload": true,
@@ -147,6 +166,13 @@ window[appName].controller('athlete', function($rootScope, $scope, $state, $http
         $scope.newfinance['athlete'] = $scope.athlete.id;
         processTheData("post", "save_achivements", "/api/athlete/interactions/create/", $scope.newachivement);
        return  $scope.newachivement="";
+
+
+    };
+    $scope.save_performance=function(){
+    $scope.newperformance['athlete'] =$scope.athlete.id;
+    processTheData("post","save_performance","/api/athlete/performance/create/",$scope.save_performance);
+    return save_performance="";
 
 
     };
