@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from rest_framework.generics import ListAPIView, RetrieveUpdateAPIView, RetrieveAPIView
 from rest_framework.authentication import BasicAuthentication, SessionAuthentication
 from rest_framework.pagination import LimitOffsetPagination
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from .models import Partner_Details
 from .serializers import PartnerSerializer
@@ -21,7 +21,7 @@ class ListPartnerAPIView(ListAPIView):
     serializer_class = PartnerSerializer
     pagination_class = LimitOffsetPagination
     authentication_classes = (BasicAuthentication, SessionAuthentication,)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, IsAdminUser)
 
 
 class PartnerIndividualAPIView(RetrieveAPIView):
@@ -43,4 +43,4 @@ class PartnerEditAPIView(RetrieveUpdateAPIView):
     queryset = Partner_Details.objects.all()
     serializer_class = PartnerSerializer
     authentication_classes = (BasicAuthentication, SessionAuthentication,)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, IsAdminUser)

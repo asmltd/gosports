@@ -5,7 +5,7 @@ from .serializers import AthleteSerializer, AthleteSerializerPartial
 from rest_framework.generics import ListAPIView, RetrieveAPIView, RetrieveUpdateAPIView
 
 from rest_framework.pagination import LimitOffsetPagination
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
 
@@ -17,7 +17,7 @@ class AthleteEditAPIView(RetrieveUpdateAPIView):
     queryset = Athlete_details.objects.all()
     serializer_class = AthleteSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, IsAdminUser)
 
 
 class AthleteListAPIView(ListAPIView):
@@ -29,7 +29,7 @@ class AthleteListAPIView(ListAPIView):
     pagination_class = LimitOffsetPagination
     serializer_class = AthleteSerializerPartial
     authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, IsAdminUser)
 
 
 class AthleteIndividualAPIView(RetrieveAPIView):
@@ -40,4 +40,4 @@ class AthleteIndividualAPIView(RetrieveAPIView):
     queryset = Athlete_details.objects.all()
     serializer_class = AthleteSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, )

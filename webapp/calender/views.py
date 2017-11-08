@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveUpdateAPIView, RetrieveDestroyAPIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from .models import Calendar
 from .serializers import CalendarSerializer
@@ -20,7 +20,7 @@ class ListCalendarAPIView(ListAPIView):
     queryset = Calendar.objects.all()
     serializer_class = CalendarSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, IsAdminUser)
 
 
 class CreateCalendarAPIView(CreateAPIView):

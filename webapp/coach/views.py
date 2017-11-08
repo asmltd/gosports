@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.generics import ListAPIView, RetrieveAPIView, RetrieveUpdateAPIView
 from rest_framework.pagination import LimitOffsetPagination
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from .models import Coach_Details
 from .serializers import CoachSerializer
@@ -23,7 +23,7 @@ class ListCoachsAPIView(ListAPIView):
     serializer_class = CoachSerializer
     pagination_class = LimitOffsetPagination
     authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated, IsAdminUser)
 
 
 class CoachIndividualAPIView(RetrieveAPIView):
@@ -45,4 +45,4 @@ class CoachEditAPIView(RetrieveUpdateAPIView):
     queryset = Coach_Details.objects.all()
     serializer_class = CoachSerializer
     authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, IsAdminUser)
